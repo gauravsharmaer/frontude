@@ -1,0 +1,38 @@
+/* @keyframes loop {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .loop-slider .inner {
+    display: flex;
+    width: fit-content;
+  }
+   */
+
+   @keyframes loop {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  /* Ensure animation runs by default */
+  .loop-slider .inner {
+    display: flex;
+    width: fit-content;
+    animation-play-state: running;
+    animation: loop var(--duration) linear infinite;
+    pointer-events: auto; /* Ensure hover events are allowed */
+  }
+  
+  /* Pauses animation when hovering over the slider container */
+  .loop-slider:hover .inner {
+    animation-play-state: paused;
+  }
+  
