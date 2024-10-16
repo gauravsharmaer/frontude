@@ -73,8 +73,9 @@
 // export default CardContainer;
 
 import React from "react";
-import "./App.css"; // Import custom CSS for keyframe animation
-import Card from "./Card";
+import "./App.css";
+import AutoScrollCardList2 from "./ScrollBottomToTop";
+import AutoScrollCardList from "./ScrollTopToBottom";
 
 const cardData = [
   {
@@ -99,33 +100,17 @@ const cardData = [
   },
 ];
 
-const LoopSlider = ({ cards, duration, direction }) => {
-  return (
-    <div
-      className="loop-slider"
-      style={{ "--duration": `${duration}ms`, "--direction": direction }}
-    >
-      <div
-        className="inner flex gap-3"
-        style={{ animation: `loop ${duration}ms linear infinite ${direction}` }}
-      >
-        {[...cards, ...cards].map((card, index) => (
-          <Card key={index} title={card.title} icon={card.icon} />
-        ))}
-      </div>
-    </div>
-  );
-};
+
 
 const App = () => {
   return (
-    <div className="flex flex-col items-center justify-center bg-gray-900 text-white">
-      <div className="tag-list max-w-full relative overflow-hidden flex flex-col gap-6">
-        <LoopSlider cards={cardData} duration={20000} direction="normal" />
-        <LoopSlider cards={cardData} duration={22000} direction="reverse" />
-        <LoopSlider cards={cardData} duration={18000} direction="normal" />
-        <LoopSlider cards={cardData} duration={24000} direction="reverse" />
-        <div className="fade absolute inset-0 pointer-events-none bg-gradient-to-r from-gray-900 via-transparent to-gray-900"></div>
+    <div className="flex flex-col items-center justify-center bg-black text-white">
+      <div className="tag-list max-w-full relative overflow-hidden flex  gap-6">
+        <div className='overlay1'></div>
+        <AutoScrollCardList reviews={cardData} />
+        <AutoScrollCardList2 reviews={cardData} />
+        <AutoScrollCardList reviews={cardData} />
+        <div className='overlay2'></div>
       </div>
     </div>
   );

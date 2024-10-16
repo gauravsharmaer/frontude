@@ -9,18 +9,18 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ title, icon, onClick }) => {
   return (
     <div
-      className="bg-[#0D0D0D] border border-[#313131]
+      className="bg-[#090c1d] border border-[#313131]
        rounded-xl px-2  w-[20rem] h-44  cursor-pointer pt-3"
       onClick={onClick}
     >
-      <div className="">
+      <div className="rounded-xl">
         <div
           className={`text-[#999999] font-medium mx-2
              font-inter text-[15.13px]  leading-[22.4px] tracking-[-0.32px] text-left`}
         >
           {`"${title}"`}
         </div>
-        <div className="flex items-center gap-2  py-3 mx-2 ">
+        <div className="flex items-center gap-2  py-3 mx-2 rounde-xl">
           <Image
             src={icon}
             alt="icon"
