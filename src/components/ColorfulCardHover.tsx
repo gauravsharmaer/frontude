@@ -86,8 +86,8 @@ const Card: FC<CardProps> = ({ color, title, description, icon }) => {
 };
 
 const ColorfulCardHover: FC = () => (
-  <div className="min-h-screen bg-[#222] flex justify-center items-center">
-    <div className="relative flex justify-center items-center gap-[50px] flex-wrap">
+  <div className="flex justify-center items-center">
+    <div className="flex justify-around  gap-[100px] flex-wrap">
       <Card
         color="#0f0"
         icon="🚀"
