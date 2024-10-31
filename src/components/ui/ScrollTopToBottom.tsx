@@ -1,8 +1,12 @@
-'use client'
-import { useEffect, useRef, useState } from 'react';
-import Card from './Card';
+"use client";
+import { useEffect, useRef, useState } from "react";
+import Card from "./Card";
 
-const AutoScrollCardList = ({ reviews }: { reviews: { title: string, icon: string }[] }) => {
+const AutoScrollCardList = ({
+  reviews,
+}: {
+  reviews: { title: string; icon: string }[];
+}) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -36,7 +40,11 @@ const AutoScrollCardList = ({ reviews }: { reviews: { title: string, icon: strin
         ))}
 
         {reviews.map((review, index) => (
-          <Card key={`${index}-duplicate`} icon={review.icon} title={review.title} />
+          <Card
+            key={`${index}-duplicate`}
+            icon={review.icon}
+            title={review.title}
+          />
         ))}
       </div>
     </div>

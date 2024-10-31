@@ -68,11 +68,46 @@ body {
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+
+@layer utilities {
+  .cursor {
+    @apply pointer-events-none;
   }
-  body {
-    @apply bg-background text-foreground;
+
+  .cursor__ball {
+    @apply fixed top-0 left-0 mix-blend-difference z-[1000];
   }
+
+  /* Ensure the big cursor ball has a transparent fill */
+  .cursor__ball--big svg circle {
+    fill: rgba(255, 255, 255, 0.2);
+  }
+
+  .cursor__ball--small svg circle {
+    fill: #ffffff;
+  }
+}
+
+body {
+  @apply h-screen bg-black cursor-none m-0 flex font-mono;
+}
+
+.left, .right {
+  @apply h-full w-full flex flex-col justify-center items-center;
+}
+
+.left h1, .left p, .left a {
+  @apply text-white;
+}
+
+.right {
+  @apply bg-white;
+}
+
+.right h1, .right p, .right a {
+  @apply text-black;
+}
+
+.right a {
+  @apply border-b-2 border-black;
 }
