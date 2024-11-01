@@ -7,6 +7,11 @@ const nextConfig = {
         hostname: "github.com",
         pathname: "/**", // Allows all paths under the domain
       },
+      {
+        protocol: "https",
+        hostname: "avatar.vercel.sh",
+        pathname: "/**", // Allows all paths under the domain
+      },
     ],
   },
 };

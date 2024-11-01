@@ -10,7 +10,7 @@ const Card: React.FC<CardProps> = ({ title, icon, onClick }) => {
   return (
     <div
       className="bg-[#090c1d] border border-[#313131]
-       rounded-xl px-2  w-[20rem] h-44  cursor-pointer pt-3"
+       rounded-xl px-2  w-[20rem] h-44   pt-3"
       onClick={onClick}
     >
       <div className="rounded-xl">
