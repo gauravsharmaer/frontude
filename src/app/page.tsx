@@ -7,33 +7,22 @@ import ColorfulCardHover from "../components/ColorfulCardHover";
 import { MarqueeDemoVertical } from "@/components/ui/marqueeVertical";
 import { HomeBackground } from "../components/ui/Background";
 // import { IoIosStar } from "react-icons/io";
-import Flogo from "../assets/FrontudeLogo.svg"
+import Flogo from "../assets/FrontudeLogo.svg";
 import Image from "next/image";
 // import "./"
 
 const Nav = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 p-8 flex items-center justify-center">
-      <div className="flex items-center gap-8 border rounded-lg bg-[#222222a4] py-2 px-7 border-[#b3b3b3]">
-
-
-
-
-
-
-
+    <nav className="fixed top-4 left-0 right-0 z-50 p-8 flex items-center justify-center">
+      <div className="flex items-center gap-8 rounded-lg backdrop-blur-md text-[20px] bg-white/10 py-2 px-7 border border-white/20 shadow-lg">
         <a href="#">who we are </a>
         <a href="#">people love us</a>
         <a href="#">services</a>
         <a href="#">Contact</a>
-
       </div>
-
     </nav>
-  )
-}
-
-
+  );
+};
 
 const Home = () => {
   return (
@@ -78,9 +67,14 @@ const Home = () => {
                 <p>100+ Businesses scaled</p>
               </div> */}
               </div>
-              <h1 className="text-white text-center">Crafting digital <span> masterpieces</span> </h1>
-              <p className="mt-4 text-[20px]">
-                we bring your ideas to life, creating standout <br /> products that fuel your growth and success.
+              <h1 className="text-white text-center text-[72px] bottom-40 relative">
+                Crafting digital <span> masterpieces</span>{" "}
+              </h1>
+              <p className="mt-4 text-[28px] bottom-44 relative ">
+                we bring your ideas to life, creating standout products <br />{" "}
+                <span className="flex justify-center items-center">
+                  that fuel your growth and success.
+                </span>
               </p>
             </div>
             <div className="flex justify-center p-8 items-center absolute bottom-0 left-0 right-0">
