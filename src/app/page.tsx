@@ -9,6 +9,7 @@ import { HomeBackground } from "../components/ui/Background";
 // import { IoIosStar } from "react-icons/io";
 import Flogo from "../assets/FrontudeLogo.svg";
 import Image from "next/image";
+import { RainbowButtonDemo } from "../components/ui/RainbowButtonui";
 // import "./"
 
 const Nav = () => {
@@ -52,7 +53,7 @@ const Home = () => {
                 transform: "translateX(-50%) translateY(-15%)",
               }}
             />
-            <Globe className="absolute !h-[600px] translate-y-[30%] opacity-100 -z-10" />
+            <Globe className="absolute !h-[600px] translate-y-[60%] opacity-100 -z-10" />
             <div className="flex flex-col items-center">
               <div className="flex items-start gap-6">
                 {/* <AvatarCirclesDemo /> */}
@@ -76,6 +77,9 @@ const Home = () => {
                   that fuel your growth and success.
                 </span>
               </p>
+              <div className="relative bottom-32">
+                <RainbowButtonDemo />
+              </div>
             </div>
             <div className="flex justify-center p-8 items-center absolute bottom-0 left-0 right-0">
               <div className="flex items-center gap-[50px]">
@@ -94,9 +98,6 @@ const Home = () => {
           <section className="w-full py-20">
             <div className="container mx-auto flex flex-col gap-32">
               <div className="w-full flex justify-center items-center">
-                <MarqueeDemoVertical />
-              </div>
-              <div className="w-full flex justify-center items-center">
                 <ServiceCard />
               </div>
               <div className="w-full flex justify-center items-center">
@@ -105,6 +106,9 @@ const Home = () => {
               <div className="w-full flex justify-center items-center">
                 <AvatarCirclesDemo />
               </div>
+            </div>
+            <div className="w-full flex justify-center items-center">
+              <MarqueeDemoVertical />
             </div>
           </section>
         </main>
