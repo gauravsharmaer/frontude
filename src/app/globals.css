@@ -2,8 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+@font-face {
+  font-family: 'OakSans-SemiBold';
+  src: url("../assets/fonts/oak-sans-cufonfonts/OakSans-SemiBold-BF648bbebd4a4eb.ttf");
+}
+
+@font-face {
+  font-family: 'OakSans-Regular';
+  src: url("../assets/fonts/oak-sans-cufonfonts/OakSans-Regular-BF648bbebd37e68.ttf");
+}
+
+@font-face {
+  font-family: 'CormorantGaramond-Bold';
+  src: url("../assets//fonts//Cormorant_Garamond/CormorantGaramond-SemiBoldItalic.ttf");
 }
 
 @layer utilities {
@@ -40,6 +59,7 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -92,11 +112,14 @@ body {
   @apply h-screen bg-black cursor-none m-0 flex font-mono;
 }
 
-.left, .right {
+.left,
+.right {
   @apply h-full w-full flex flex-col justify-center items-center;
 }
 
-.left h1, .left p, .left a {
+.left h1,
+.left p,
+.left a {
   @apply text-white;
 }
 
@@ -104,10 +127,34 @@ body {
   @apply bg-white;
 }
 
-.right h1, .right p, .right a {
+.right h1,
+.right p,
+.right a {
   @apply text-black;
 }
 
 .right a {
   @apply border-b-2 border-black;
+}
+
+
+
+h1 {
+  font-family: 'OakSans-SemiBold';
+  font-size: 4rem;
+  color: white;
+  /* text-align: center; */
+  margin-top: 20px;
+}
+
+h1 span {
+  font-family: 'CormorantGaramond-Bold';
+  /* font-size: 3rem; */
+  /* color: white; */
+  /* text-align: center; */
+  /* margin-top: 20px; */
+}
+
+p {
+  font-family: 'OakSans-Regular';
 }
