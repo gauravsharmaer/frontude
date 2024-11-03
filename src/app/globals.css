@@ -22,7 +22,11 @@
 
 @font-face {
   font-family: 'CormorantGaramond-Bold';
-  src: url("../assets//fonts//Cormorant_Garamond/CormorantGaramond-SemiBoldItalic.ttf");
+  src: url("../assets//fonts/packota/Pockota-MediumItalic.otf");
+}
+@font-face {
+  font-family: PackotaMedium;
+  src: url("../assets/fonts/packota//Pockota-Medium.otf");
 }
 
 @layer utilities {
@@ -150,19 +154,15 @@ body {
 
 
 h1 {
-  font-family: 'OakSans-SemiBold';
-  font-size: 4rem;
+  font-family: PackotaMedium;
+  font-size: 80px;
   color: white;
   /* text-align: center; */
   margin-top: 20px;
 }
 
 h1 span {
-  font-family: 'CormorantGaramond-Bold';
-  /* font-size: 3rem; */
-  /* color: white; */
-  /* text-align: center; */
-  /* margin-top: 20px; */
+  font-family: PackotaMedium;
 }
 
 p {
@@ -177,7 +177,12 @@ nav {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+button {
+  font-family: 'OakSans-SemiBold';
 }

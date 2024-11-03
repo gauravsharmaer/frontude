@@ -9,7 +9,7 @@ const HomeBackground = React.forwardRef<HTMLDivElement, AuthBackgroundProps>(
   ({ className = "", ...props }, ref) => (
     <div
       ref={ref}
-      className={`bg-black min-h-screen w-full overflow-x-hidden text-white ${className}`}
+      className={`bg-[#070305] min-h-screen w-full overflow-x-hidden text-white ${className}`}
       {...props}
     >
       <ParticlesDemo />

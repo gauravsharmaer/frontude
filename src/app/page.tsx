@@ -10,6 +10,7 @@ import { HomeBackground } from "../components/ui/Background";
 import Flogo from "../assets/FrontudeLogo.svg";
 import Image from "next/image";
 import { RainbowButtonDemo } from "../components/ui/RainbowButtonui";
+import Background from "../assets/image.jpg"
 // import "./"
 
 const Nav = () => {
@@ -35,9 +36,11 @@ const Home = () => {
         <main className="flex flex-col w-full">
           {/* First section - Globe with light ray */}
           <section className="h-screen w-full flex items-center justify-center relative overflow-hidden">
+            <Image src={Background} alt="Background" layout="fill" objectFit="cover" className="-z-30 h-full w-full" />
+            {/* <div className="bg-[#1616168c] absolute top-0 left-0 right-0 bottom-0 -z-10" ></div> */}
             {/* Light ray effect */}
-            <div
-              className="absolute top-0 left-1/2 -translate-x-1/2 h-[160%] opacity-100 pointer-events-none"
+            {/* <div
+              className="absolute top-0 left-1/2 -translate-x-1/2 h-[160%] opacity-50 pointer-events-none"
               style={{
                 width: "30%",
                 clipPath: "polygon(48% 0%, 52% 0%, 150% 100%, -50% 100%)",
@@ -52,36 +55,24 @@ const Home = () => {
                 zIndex: 5,
                 transform: "translateX(-50%) translateY(-15%)",
               }}
-            />
-            <Globe className="absolute !h-[600px] translate-y-[60%] opacity-100 -z-10" />
+            /> */}
+            {/* <Globe className="absolute !h-[600px] translate-y-[60%] opacity-50 -z-10" /> */}
             <div className="flex flex-col items-center">
-              <div className="flex items-start gap-6">
-                {/* <AvatarCirclesDemo /> */}
-                {/* <div className="flex flex-col items-start justify-between">
-                <div className="flex items-center gap-2">
-                  <IoIosStar className="text-white" />
-                  <IoIosStar className="text-white" />
-                  <IoIosStar className="text-white" />
-                  <IoIosStar className="text-white" />
-                  <IoIosStar className="text-white" />
-                </div>
-                <p>100+ Businesses scaled</p>
-              </div> */}
-              </div>
-              <h1 className="text-white text-center text-[72px] bottom-40 relative">
+              
+              <h1 className="text-white text-center text-[80px] relative">
                 Crafting digital <span> masterpieces</span>{" "}
               </h1>
-              <p className="mt-4 text-[28px] bottom-44 relative ">
-                we bring your ideas to life, creating standout products <br />{" "}
-                <span className="flex justify-center items-center">
+              <p className="mt-2 text-[32px] relative opacity-70 ">
+                We bring your ideas to life, creating standout products <br />{" "}
+                <span className="flex justify-center items-center -mt-[10px] ">
                   that fuel your growth and success.
                 </span>
               </p>
-              <div className="relative bottom-32">
+              <div className="relative mt-20">
                 <RainbowButtonDemo />
               </div>
             </div>
-            <div className="flex justify-center p-8 items-center absolute bottom-0 left-0 right-0">
+            {/* <div className="flex justify-center p-8 items-center absolute bottom-0 left-0 right-0">
               <div className="flex items-center gap-[50px]">
                 <Image src={Flogo} alt="Frontude Logo" height={36} />
                 <Image src={Flogo} alt="Frontude Logo" height={36} />
@@ -91,7 +82,7 @@ const Home = () => {
                 <Image src={Flogo} alt="Frontude Logo" height={36} />
                 <Image src={Flogo} alt="Frontude Logo" height={36} />
               </div>
-            </div>
+            </div> */}
           </section>
 
           {/* Rest of the sections */}
