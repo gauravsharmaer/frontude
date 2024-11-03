@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import MouseTrail from "../components/MouseTrail";
 import Globe from "../components/ui/globe";
 import ServiceCard from "../components/ServiceCard";
@@ -10,7 +12,8 @@ import { HomeBackground } from "../components/ui/Background";
 import Flogo from "../assets/FrontudeLogo.svg";
 import Image from "next/image";
 import { RainbowButtonDemo } from "../components/ui/RainbowButtonui";
-import Background from "../assets/image.jpg"
+import Background from "../assets/image.jpg";
+import { ParticlesDemo } from "@/components/ui/particlesui";
 // import "./"
 
 const Nav = () => {
@@ -27,6 +30,18 @@ const Nav = () => {
 };
 
 const Home = () => {
+  // Add state to track mouse position
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  // Add mouse move handler
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePosition({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
   return (
     <>
       <Nav />
@@ -35,30 +50,63 @@ const Home = () => {
         <MouseTrail />
         <main className="flex flex-col w-full">
           {/* First section - Globe with light ray */}
-          <section className="h-screen w-full flex items-center justify-center relative overflow-hidden">
-            <Image src={Background} alt="Background" layout="fill" objectFit="cover" className="-z-30 h-full w-full" />
-            {/* <div className="bg-[#1616168c] absolute top-0 left-0 right-0 bottom-0 -z-10" ></div> */}
-            {/* Light ray effect */}
-            {/* <div
-              className="absolute top-0 left-1/2 -translate-x-1/2 h-[160%] opacity-50 pointer-events-none"
+          <section
+            className="h-screen w-full flex items-center justify-center relative overflow-hidden"
+            onMouseMove={handleMouseMove}
+          >
+            <Image
+              src={Background}
+              alt="Background"
+              layout="fill"
+              objectFit="cover"
+              className="-z-30 h-full w-full"
+            />
+
+            {/* Torch-like spotlight overlay */}
+            <div
+              className="absolute inset-0 bg-black/70 -z-20 transition-[mask-position] duration-300 ease-in-out"
               style={{
-                width: "30%",
-                clipPath: "polygon(48% 0%, 52% 0%, 150% 100%, -50% 100%)",
-                background: `linear-gradient(180deg, 
-                rgba(0, 72, 255, 0.4) 0%,
-                rgba(0, 72, 255, 0.3) 20%,
-                rgba(0, 72, 255, 0.2) 40%,
-                rgba(0, 72, 255, 0.15) 60%,
-                rgba(0, 72, 255, 0.1) 80%,
-                transparent 100%)`,
+                maskImage: `
+                  radial-gradient(
+                    ellipse 400px 600px at ${mousePosition.x}px ${
+                  mousePosition.y
+                }px,
+                    transparent 10%,
+                    rgba(0,0,0,0.2) 40%,
+                    black 70%
+                  ),
+                  radial-gradient(
+                    ellipse 500px 700px at ${mousePosition.x + 100}px ${
+                  mousePosition.y - 50
+                }px,
+                    transparent 20%,
+                    black 70%
+                  )
+                `,
+                WebkitMaskImage: `
+                  radial-gradient(
+                    ellipse 400px 600px at ${mousePosition.x}px ${
+                  mousePosition.y
+                }px,
+                    transparent 10%,
+                    rgba(0,0,0,0.2) 40%,
+                    black 70%
+                  ),
+                  radial-gradient(
+                    ellipse 500px 700px at ${mousePosition.x + 100}px ${
+                  mousePosition.y - 50
+                }px,
+                    transparent 20%,
+                    black 70%
+                  )
+                `,
                 filter: "blur(40px)",
-                zIndex: 5,
-                transform: "translateX(-50%) translateY(-15%)",
               }}
-            /> */}
-            {/* <Globe className="absolute !h-[600px] translate-y-[60%] opacity-50 -z-10" /> */}
+            />
+
+            <ParticlesDemo className="absolute inset-0 -z-10" />
+
             <div className="flex flex-col items-center">
-              
               <h1 className="text-white text-center text-[80px] relative">
                 Crafting digital <span> masterpieces</span>{" "}
               </h1>
