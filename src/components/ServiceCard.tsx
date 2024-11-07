@@ -7,7 +7,7 @@ import image6588 from "../assets/image 6588.png";
 const ServiceCard = () => {
   return (
     <>
-      <div className="w-[368px] h-[510px] relative bg-[#e6e1f0]/20 rounded-[32px] border border-white/40 backdrop-blur-[10px]">
+      <div className="w-[368px] h-[510px] relative rounded-[32px] border border-white/40">
         <div className="left-[28px] top-[28px] absolute flex-col justify-center items-start gap-4 inline-flex">
           <div className="justify-start items-center gap-4 inline-flex">
             <div className="w-8 h-8 relative">
@@ -23,13 +23,13 @@ const ServiceCard = () => {
           </div>
         </div>
         <Image
-          className="w-[305px] h-[371.19px] left-[67px] top-[140px] absolute "
+          className="w-[305px] h-[371.19px] left-[67px] top-[140px] absolute"
           alt="Image"
           src={image6588}
         />
       </div>
 
-      <div className="w-[368px] h-[510px] relative bg-[#e6e1f0]/20 rounded-[32px] border border-white/40 backdrop-blur-[10px]">
+      <div className="w-[368px] h-[510px] relative rounded-[32px] border border-white/40 backdrop-blur-[10px] overflow-hidden">
         <div className="left-[28px] top-[28px] absolute flex-col justify-center items-start gap-4 inline-flex">
           <div className="justify-start items-center gap-4 inline-flex">
             <div className="w-8 h-8 relative"></div>

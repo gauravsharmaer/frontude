@@ -38,7 +38,7 @@ const thirdColumn = reviews.slice(columnSize * 2);
 
 export function MarqueeDemoVertical() {
   return (
-    <div className="relative bg-black flex h-[500px] w-full flex-row items-center justify-center gap-4 overflow-hidden rounded-lg border bg-background md:shadow-xl">
+    <div className="relative bg-black flex h-[500px] w-full flex-row items-center justify-center gap-4 overflow-hidden rounded-lg  bg-background md:shadow-xl">
       <Marquee pauseOnHover vertical className="[--duration:20s]">
         {firstColumn.map((review, index) => (
           <Card key={index} {...review} />
@@ -54,8 +54,8 @@ export function MarqueeDemoVertical() {
           <Card key={index} {...review} />
         ))}
       </Marquee>
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-background"></div>
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background"></div>
+      <div className="pointer-events-none overlay1 "></div>
+      <div className="pointer-events-none overlay2 "></div>
     </div>
   );
 }

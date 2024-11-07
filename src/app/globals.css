@@ -186,3 +186,83 @@ nav {
 button {
   font-family: 'OakSans-SemiBold';
 }
+
+/* 
+.line {
+  fill: none;
+}
+
+#svg {
+  margin-top: 60vh;
+} */
+
+/* Add these GSAP-specific styles */
+/* @import url('https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap'); */
+
+/* Timeline Animation Styles */
+/* .timeline-container {
+  position: relative;
+  height: 400vh;
+  background: black;
+} */
+
+/* #svg {
+  max-width: 600px;
+  overflow: visible;
+}
+
+.ball {
+  fill: orange;
+  opacity: 0;
+} */
+
+/* text {
+  fill: orange;
+  font-size: 15px;
+  font-family: "Signika Negative", sans-serif;
+  opacity: 0;
+} */
+
+/* .line {
+  fill: none;
+  stroke: white;
+  stroke-width: 2px;
+} */
+
+/* .theLine {
+  fill: none;
+  stroke: orange;
+  stroke-width: 10px;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+} */
+
+/* Remove duplicate styles and conflicting positioning */
+/* .svg-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+/* Add these styles where appropriate in your CSS file */
+/* .timeline-wrapper {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ball, .theLine {
+  opacity: 0;
+  visibility: hidden;
+} */
+/* .sticky {
+  position: sticky;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.timeline-container {
+  min-height: 400vh;
+  position: relative;
+} */

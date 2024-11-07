@@ -4,6 +4,7 @@ import "./globals.css";
 import { HomeBackground } from "@/components/ui/Background";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
+import { TimelineAnimation } from "@/components/ui/TimelineAnimation";
 config.autoAddCss = false;
 
 const geistSans = localFont({
