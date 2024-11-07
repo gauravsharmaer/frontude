@@ -11,8 +11,13 @@
 
 
 @font-face {
-  font-family: 'OakSans-SemiBold';
-  src: url("../assets/fonts/oak-sans-cufonfonts/OakSans-SemiBold-BF648bbebd4a4eb.ttf");
+  font-family: 'ClashGrotesk-Medium';
+  src: url("../assets/fonts/ClashGrotesk_Complete/Fonts/WEB/fonts/ClashGrotesk-Medium.ttf");
+}
+
+@font-face {
+  font-family: 'OakSans-Medium';
+  src: url("../assets/fonts/oak-sans-cufonfonts/OakSans-Medium-BF648bbebd57de3.ttf");
 }
 
 @font-face {
@@ -24,9 +29,10 @@
   font-family: 'CormorantGaramond-Bold';
   src: url("../assets//fonts/packota/Pockota-MediumItalic.otf");
 }
+
 @font-face {
   font-family: PackotaMedium;
-  src: url("../assets/fonts/packota//Pockota-Medium.otf");
+  src: url("../assets/fonts/Recoleta-RegularDEMO.otf");
 }
 
 @layer utilities {
@@ -154,7 +160,7 @@ body {
 
 
 h1 {
-  font-family: PackotaMedium;
+  font-family: 'ClashGrotesk-Medium';
   font-size: 80px;
   color: white;
   /* text-align: center; */
@@ -162,7 +168,16 @@ h1 {
 }
 
 h1 span {
-  font-family: PackotaMedium;
+  font-family: 'ClashGrotesk-Medium';
+}
+
+b,
+strong {
+  font-family: 'OakSans-Medium';
+}
+
+h3 {
+  font-family: 'ClashGrotesk-Medium';
 }
 
 p {
@@ -170,7 +185,7 @@ p {
 }
 
 nav {
-  font-family: 'OakSans-SemiBold';
+  font-family: 'ClashGrotesk-Medium';
 }
 
 @layer base {
@@ -184,5 +199,136 @@ nav {
 }
 
 button {
-  font-family: 'OakSans-SemiBold';
+  font-family: 'ClashGrotesk-Medium';
+}
+
+.overlay1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.979), #00000000);
+  z-index: 2;
+}
+
+.overlay2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  background-image: linear-gradient(to bottom, #00000000, rgba(0, 0, 0, 0.979));
+  z-index: 2;
+}
+
+.ct1 {
+  /* background-image: linear-gradient(43deg, #41d07d 0%, #2139be 46%, #70eeff 100%); */
+  background-color: #d6180a;
+}
+
+.fading_div_right {
+  height: 2px;
+  width: 140px;
+  background-image: linear-gradient(to right, #d6170afa, #00000000);
+  z-index: 2;
+}
+
+.fading_div_left {
+  height: 2px;
+  width: 140px;
+  background-image: linear-gradient(to left, #d6170afa, #00000000);
+  z-index: 2;
+}
+
+.bgblue {
+  border: 1px solid #202020;
+  border-radius: 8px;
+}
+
+.bgred {
+  border: 1px solid #202020;
+  border-radius: 8px;
+}
+
+
+/* .bgred:first-child {
+  background: linear-gradient(135deg, transparent, transparent, #cc11116b);
+}
+
+
+.bgred:nth-child(2) {
+  background: linear-gradient(45deg, #cc11116b, transparent, transparent);
+}
+
+
+.bgred:nth-child(3) {
+  background: linear-gradient(45deg, transparent, transparent, #cc11116b);
+} 
+.bgred:last-child {
+  background: linear-gradient(135deg, #cc11116b, transparent, transparent);
+}   
+
+*/
+
+/*
+
+.bgblue:nth-child(4) {
+  background: linear-gradient(45deg, transparent, transparent, #cc11116b);
+}
+
+.bgblue:nth-child(5) {
+  background: linear-gradient(to bottom, #cc11116b, transparent, transparent);
+}
+  */
+
+
+
+.why_us_card {
+  /* background-color: #000000; */
+  font-size: 1rem;
+  padding: 1.5rem;
+}
+
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dot {
+  width: 30px;
+  height: 2px;
+  border-radius: 2px;
+  margin: 0 4px;
+  cursor: pointer;
+}
+*:focus {
+  outline: none;
+}
+textarea {
+  height: 80px;
+}
+
+input, textarea{
+  background:none;
+  border:none;
+  border: 1px solid #202020;
+  border-radius: 4px;
 }

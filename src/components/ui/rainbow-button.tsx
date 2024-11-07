@@ -12,7 +12,7 @@ export function RainbowButton({
   return (
     <button
       className={cn(
-        "group relative inline-flex w-[320px] h-11 animate-rainbow cursor-pointer items-center justify-center rounded-xl border-0 bg-[length:200%] px-8 py-2 font-medium text-black dark:text-white transition-colors [background-clip:padding-box,border-box,border-box] [background-origin:border-box] [border:calc(0.15*1rem)_solid_transparent] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+        "group relative inline-flex w-[320px] h-11 animate-rainbow cursor-pointer items-center justify-center rounded-sm border-0 bg-[length:200%] px-8 py-2 font-medium text-black dark:text-white transition-colors [background-clip:padding-box,border-box,border-box] [background-origin:border-box] [border:calc(0.15*1rem)_solid_transparent] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
 
         // Updated before styles - reduced opacity further and increased blur
         "before:absolute before:bottom-[-25%] before:left-1/2 before:z-0 before:h-1/4 before:w-full before:-translate-x-1/2 before:animate-rainbow before:bg-[linear-gradient(90deg,hsl(var(--color-1)),hsl(var(--color-5)),hsl(var(--color-3)),hsl(var(--color-4)),hsl(var(--color-2)))] before:bg-[length:200%] before:opacity-50 before:[filter:blur(calc(0.7*1rem))]",

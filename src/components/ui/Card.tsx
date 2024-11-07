@@ -9,7 +9,7 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ title, icon, onClick }) => {
   return (
     <div
-      className="bg-[#090c1d] border border-[#313131]
+      className="bg-[#0c0c0c] border border-[#1f1f1f]
        rounded-xl px-2  w-[20rem] h-44   pt-3"
       onClick={onClick}
     >

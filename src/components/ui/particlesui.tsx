@@ -17,7 +17,7 @@ export function ParticlesDemo() {
     <div className="absolute inset-0 w-full h-full z-0">
       <Particles
         className="absolute inset-0"
-        quantity={200}
+        quantity={50}
         ease={100}
         color={color}
         refresh
