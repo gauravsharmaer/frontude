@@ -16,7 +16,7 @@ import Background from "../assets/image.jpg";
 import { ParticlesDemo } from "@/components/ui/particlesui";
 import { TimelineAnimation } from "@/components/ui/TimelineAnimation";
 import Services from "@/components/Services";
-import WhyUs from "@/components/WhyUs";
+import WhyUs from "@/components/WhyUS";
 import AutoSlidingCarousel from "@/components/Carousel";
 import Contact from "@/components/Contact";
 // import "./"

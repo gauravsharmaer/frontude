@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
-import Background from "../assets/drawing-2.svg";
+
 
 const testimonials = [
   {
@@ -42,7 +41,7 @@ const AutoSlidingCarousel = () => {
           <strong className="text-white text-[24px]">Testimonials</strong>
           <div className="fading_div_right"></div>
         </div>
-        <p className=" text-[24px] relative text-center opacity-70">
+        <p className=" text-[24px] relative text-center opacity-70 text-white">
           What are clients have to say about us
         </p>
       </div>
@@ -57,7 +56,7 @@ const AutoSlidingCarousel = () => {
               className="slide w-full flex items-center justify-center flex-shrink-0"
             >
               <div className="card flex flex-col items-center px-8 py-4 w-[60%] relative overflow-hidden">
-                <h3 className="mt-6 text-[32px] text-center hoverable">
+                <h3 className="mt-6 text-[32px] text-center hoverable text-white">
                   {slide.description}
                 </h3>
                 <div className="flex items-center w-auto gap-8 mt-[40px]">

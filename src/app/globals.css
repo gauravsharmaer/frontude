@@ -187,6 +187,20 @@ button {
   font-family: 'OakSans-SemiBold';
 }
 
+.fading_div_right {
+  height: 2px;
+  width: 140px;
+  background-image: linear-gradient(to right, #d6180afa, #00000000);
+  z-index: 2;
+}
+
+.fading_div_left {
+  height: 2px;
+  width: 140px;
+  background-image: linear-gradient(to left, #d6180afa, #00000000);
+  z-index: 2;
+}
+
 /* 
 .line {
   fill: none;

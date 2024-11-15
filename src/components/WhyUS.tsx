@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Background from "../assets/drawing-2.svg";
 import Visual from "../assets/Visual.svg";
 import Performance from "../assets/Performance.svg";
 import Security from "../assets/secure.svg";
@@ -14,7 +13,7 @@ const WhyUs = () => {
           <strong className="text-white text-[24px]">Why US</strong>
           <div className="fading_div_right"></div>
         </div>
-        <p className=" text-[24px] relative text-center opacity-70">
+        <p className=" text-[24px] relative text-center opacity-70 text-white">
           With years of experience, we have found that great apps excel in
           <br /> <b className="text-[#d6180a]">visual appeal</b>,{" "}
           <b className="text-[#d6180a]">reliability</b>,{" "}
@@ -30,7 +29,7 @@ const WhyUs = () => {
           <div className="why_us_card flex flex-col items-start px-8 py-4 relative overflow-hidden">
             <div className="flex items-center gap-8">
               <Image src={Visual} alt="Visual Appeal" height={36} />
-              <h3 className="text-[24px] hoverable">Visual Appeal</h3>
+              <h3 className="text-[24px] hoverable text-white">Visual Appeal</h3>
             </div>
             <p className="mt-8 text-white opacity-70">
               We design applications that are visually appealing and easy to
@@ -44,7 +43,7 @@ const WhyUs = () => {
           <div className="why_us_card flex flex-col items-start px-8 py-4 relative overflow-hidden">
             <div className="flex items-center gap-8">
               <Image src={Reliability} alt="Reliability" height={36} />
-              <h3 className="text-[24px]">Reliability</h3>
+              <h3 className="text-[24px] text-white">Reliability</h3>
             </div>
             <p className="mt-8 text-white opacity-70">
               We build applications that are reliable and perform well under
@@ -57,9 +56,9 @@ const WhyUs = () => {
           <div className="why_us_card flex flex-col items-start px-8 py-4 relative overflow-hidden">
             <div className="flex items-center gap-8">
               <Image src={Performance} alt="Performance" height={26} />
-              <b className=" text-[24px]">Performance</b>
+              <b className=" text-[24px] text-white">Performance</b>
             </div>
-            <p className="mt-8 text-white opacity-70">
+            <p className="mt-8 text-white opacity-70 ">
               We optimize applications for speed and performance. Our team of
               experts will work with you to create an app that loads quickly and
               runs smoothly on all devices.
@@ -71,7 +70,7 @@ const WhyUs = () => {
           <div className="why_us_card flex flex-col items-start px-8 py-4 relative overflow-hidden">
             <div className="flex items-center gap-8">
               <Image src={Security} alt="Security" height={36} />
-              <b className=" text-[24px]">Security</b>
+              <b className=" text-[24px] text-white">Security</b>
             </div>
             <p className="mt-8 text-white opacity-70">
               We take security seriously and follow best practices to protect
