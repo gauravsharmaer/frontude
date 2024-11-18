@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 import * as React from "react";
 import { ParticlesDemo } from "./particlesui";
 
@@ -8,10 +9,10 @@ const HomeBackground = React.forwardRef<HTMLDivElement, AuthBackgroundProps>(
   ({ className = "", ...props }, ref) => (
     <div
       ref={ref}
-      className={`bg-[#070305] min-h-screen w-full relative overflow-auto ${className}`}
+      className={`bg-[#070305] min-h-screen w-full relative ${className}`}
       {...props}
     >
-      <ParticlesDemo className="fixed inset-0 -z-10 pointer-events-none" />
+      <ParticlesDemo />
       <div className="relative z-10 w-full">{props.children}</div>
     </div>
   )

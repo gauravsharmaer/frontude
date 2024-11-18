@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { BorderBeam } from "./ui/border-beam";
 
 const testimonials = [
   {
@@ -10,6 +10,18 @@ const testimonials = [
   },
   {
     client: "Jane Doe",
+    org: "Frontude",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+  {
+    client: "John Smith",
+    org: "Frontude",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+  {
+    client: "John Smith",
     org: "Frontude",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -55,14 +67,29 @@ const AutoSlidingCarousel = () => {
               key={index}
               className="slide w-full flex items-center justify-center flex-shrink-0"
             >
-              <div className="card flex flex-col items-center px-8 py-4 w-[60%] relative overflow-hidden">
-                <h3 className="mt-6 text-[32px] text-center hoverable text-white">
+              <div
+                className="card relative flex flex-col items-center px-8 py-4 w-[60%]
+                border-white/30 rounded-2xl border
+                shadow-[0_4px_30px_rgba(0,0,0,0.1)]
+                backdrop-blur-[5px] 
+                hover:backdrop-blur-[12px] transition-all duration-300
+                overflow-hidden"
+              >
+                <BorderBeam
+                  size={150}
+                  duration={8}
+                  delay={2}
+                  colorFrom="#ffffff"
+                  colorTo="#d6180a"
+                  borderWidth={1}
+                />
+                <h3 className="mt-6 text-[32px] text-center hoverable text-white relative">
                   {slide.description}
                 </h3>
-                <div className="flex items-center w-auto gap-8 mt-[40px]">
-                  <p className=" text-white">{slide.client}</p>
+                <div className="flex items-center w-auto gap-8 mt-[40px] relative">
+                  <p className="text-white">{slide.client}</p>
                   <div className="w-[2px] h-[20px] bg-[#d6180a]"></div>
-                  <p className=" text-white">{slide.org}</p>
+                  <p className="text-white">{slide.org}</p>
                 </div>
               </div>
             </div>

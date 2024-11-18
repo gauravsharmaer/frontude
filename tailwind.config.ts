@@ -1,8 +1,8 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-    darkMode: ["class"],
-    content: [
+  darkMode: ["class"],
+  content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -65,7 +65,10 @@ const config: Config = {
   			meteor: 'meteor 5s linear infinite',
   			marquee: 'marquee var(--duration) infinite linear',
   			'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
-  			rainbow: 'rainbow var(--speed, 2s) infinite linear'
+  			rainbow: 'rainbow var(--speed, 2s) infinite linear',
+  			shine: 'shine 4s linear infinite',
+  			'border-beam': 'border-beam calc(var(--duration)*1s) infinite linear',
+  			ripple: 'ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite'
   		},
   		keyframes: {
   			meteor: {
@@ -103,6 +106,37 @@ const config: Config = {
   				},
   				'100%': {
   					'background-position': '200%'
+  				}
+  			},
+  			shine: {
+  				'0%': {
+  					transform: 'translateX(-100%) skewX(-10deg)',
+  					opacity: '0'
+  				},
+  				'5%': {
+  					opacity: '0'
+  				},
+  				'48%': {
+  					opacity: '0.2'
+  				},
+  				'80%': {
+  					opacity: '0'
+  				},
+  				'100%': {
+  					transform: 'translateX(200%) skewX(-10deg)'
+  				}
+  			},
+  			'border-beam': {
+  				'100%': {
+  					'offset-distance': '100%'
+  				}
+  			},
+  			ripple: {
+  				'0%, 100%': {
+  					transform: 'translate(-50%, -50%) scale(1)'
+  				},
+  				'50%': {
+  					transform: 'translate(-50%, -50%) scale(0.9)'
   				}
   			}
   		}

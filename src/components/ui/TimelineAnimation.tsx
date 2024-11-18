@@ -1,143 +1,375 @@
+// "use client";
+
+// import React, { useRef } from "react";
+// import { motion, useScroll, useTransform } from "framer-motion";
+
+// export default function Component() {
+//   const containerRef = useRef<HTMLDivElement>(null);
+//   const { scrollYProgress } = useScroll({
+//     target: containerRef,
+//     offset: ["start 90%", "end end"],
+//   });
+
+//   const planningOpacity = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
+//   const analysisOpacity = useTransform(scrollYProgress, [0.2, 0.3], [0, 1]);
+//   const designOpacity = useTransform(scrollYProgress, [0.4, 0.5], [0, 1]);
+//   const implementationOpacity = useTransform(
+//     scrollYProgress,
+//     [0.6, 0.7],
+//     [0, 1]
+//   );
+//   const testingOpacity = useTransform(scrollYProgress, [0.8, 0.9], [0, 1]);
+//   const maintenanceOpacity = useTransform(scrollYProgress, [0.9, 1], [0, 1]);
+
+//   return (
+//     <div ref={containerRef} className="relative w-full min-h-[800vh] bg-black">
+//       <div className="sticky top-10 w-full min-h-screen flex items-center justify-center">
+//         <svg
+//           className="w-full h-screen"
+//           viewBox="0 0 1000 800"
+//           preserveAspectRatio="xMidYMid meet"
+//         >
+//           <defs>
+//             <filter id="glow">
+//               <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+//               <feMerge>
+//                 <feMergeNode in="coloredBlur" />
+//                 <feMergeNode in="SourceGraphic" />
+//               </feMerge>
+//             </filter>
+//           </defs>
+
+//           <motion.path
+//             d="M 50,100
+//                H 300
+//                C 500,100 700,100 800,200
+//                C 900,300 900,400 800,500
+//                C 700,600 500,600 300,500"
+//             className="stroke-[#d6180a] fill-none stroke-[2px]"
+//             strokeLinecap="round"
+//             filter="url(#glow)"
+//             style={{
+//               pathLength: scrollYProgress,
+//             }}
+//           />
+
+//           {/* Planning */}
+//           <motion.g style={{ opacity: planningOpacity }}>
+//             <circle
+//               cx="50"
+//               cy="100"
+//               r="4"
+//               className="fill-[#d6180a]"
+//               filter="url(#glow)"
+//             />
+//             <text x="20" y="80" className="text-[14px] fill-white font-light">
+//               Planning
+//             </text>
+//           </motion.g>
+
+//           {/* Analysis */}
+//           <motion.g style={{ opacity: analysisOpacity }}>
+//             <circle
+//               cx="250"
+//               cy="100"
+//               r="4"
+//               className="fill-[#d6180a]"
+//               filter="url(#glow)"
+//             />
+//             <text x="220" y="80" className="text-[14px] fill-white font-light">
+//               Analysis
+//             </text>
+//           </motion.g>
+
+//           {/* Design */}
+//           <motion.g style={{ opacity: designOpacity }}>
+//             <circle
+//               cx="650"
+//               cy="125"
+//               r="4"
+//               className="fill-[#d6180a]"
+//               filter="url(#glow)"
+//             />
+//             <text x="620" y="105" className="text-[14px] fill-white font-light">
+//               Design
+//             </text>
+//           </motion.g>
+
+//           {/* Implementation */}
+//           <motion.g style={{ opacity: implementationOpacity }}>
+//             <circle
+//               cx="800"
+//               cy="200"
+//               r="4"
+//               className="fill-[#d6180a]"
+//               filter="url(#glow)"
+//             />
+//             <text x="770" y="180" className="text-[14px] fill-white font-light">
+//               Implementation
+//             </text>
+//           </motion.g>
+
+//           {/* Testing */}
+//           <motion.g style={{ opacity: testingOpacity }}>
+//             <circle
+//               cx="800"
+//               cy="500"
+//               r="4"
+//               className="fill-[#d6180a]"
+//               filter="url(#glow)"
+//             />
+//             <text x="770" y="480" className="text-[14px] fill-white font-light">
+//               Testing
+//             </text>
+//           </motion.g>
+
+//           {/* Maintenance */}
+//           <motion.g style={{ opacity: maintenanceOpacity }}>
+//             <circle
+//               cx="300"
+//               cy="500"
+//               r="4"
+//               className="fill-[#d6180a]"
+//               filter="url(#glow)"
+//             />
+//             <text x="270" y="480" className="text-[14px] fill-white font-light">
+//               Maintenance
+//             </text>
+//             <text x="270" y="520" className="text-xs fill-white font-light">
+//               Continuous improvement and support
+//             </text>
+//             <text x="270" y="540" className="text-xs fill-white font-light">
+//               to ensure long-term success
+//             </text>
+//           </motion.g>
+//         </svg>
+//       </div>
+//     </div>
+//   );
+// }
+
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
-export function TimelineAnimation() {
-  const svgRef = useRef<SVGSVGElement>(null);
-  const pathRef = useRef<SVGPathElement>(null);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [isInView, setIsInView] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
+export default function Component() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 100%", "end end"],
+  });
 
-  useEffect(() => {
-    let lastScrollTop = window.scrollY;
-
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-
-      const rect = sectionRef.current.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
-      const currentScrollTop = window.scrollY;
-
-      // Check if section is in view
-      if (
-        rect.top <= viewportHeight * 0.5 &&
-        rect.bottom >= viewportHeight * 0.5
-      ) {
-        setIsInView(true);
-        setIsAnimating(true);
-
-        // Determine scroll direction
-        const isScrollingDown = currentScrollTop > lastScrollTop;
-
-        // Calculate progress based on scroll direction
-        const newProgress = isScrollingDown
-          ? Math.min(scrollProgress + 0.02, 1)
-          : Math.max(scrollProgress - 0.02, 0);
-
-        setScrollProgress(newProgress);
-
-        // Only prevent default scroll while animating within the section
-        if (newProgress > 0 && newProgress < 1) {
-          window.scrollTo(0, lastScrollTop);
-        }
-      } else {
-        setIsInView(false);
-        setIsAnimating(false);
-      }
-
-      if (!isAnimating) {
-        lastScrollTop = currentScrollTop;
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [scrollProgress, isAnimating]);
-
-  useEffect(() => {
-    if (pathRef.current) {
-      const length = pathRef.current.getTotalLength();
-      pathRef.current.style.strokeDasharray = length.toString();
-      pathRef.current.style.strokeDashoffset = (
-        length -
-        length * scrollProgress
-      ).toString();
-    }
-  }, [scrollProgress]);
+  const planningOpacity = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
+  const analysisOpacity = useTransform(scrollYProgress, [0.2, 0.3], [0, 1]);
+  const designOpacity = useTransform(scrollYProgress, [0.4, 0.5], [0, 1]);
+  const implementationOpacity = useTransform(
+    scrollYProgress,
+    [0.6, 0.7],
+    [0, 1]
+  );
+  const testingOpacity = useTransform(scrollYProgress, [0.8, 0.9], [0, 1]);
+  const maintenanceOpacity = useTransform(scrollYProgress, [0.9, 1], [0, 1]);
 
   return (
-    <section
-      ref={sectionRef}
-      id="timeline-section"
-      className="min-h-screen w-full relative flex items-center justify-center"
-    >
-      {isInView && (
-        <div className="fixed inset-0 bg-[#070305] transition-opacity duration-500 opacity-100" />
-      )}
-      <div className="relative w-full z-20">
-        <h1 className="text-center text-3xl font-bold mb-20 text-orange-500">
-          Scroll to see the process flow
-        </h1>
-        <svg
-          ref={svgRef}
-          className="w-full h-[60vh]"
-          viewBox="0 0 1000 800"
-          preserveAspectRatio="xMidYMid meet"
-        >
-          <path
-            ref={pathRef}
-            d="M 50,100 L 200,100 Q 800,100 600,200 T 900,400 Q 950,500 850,650"
-            className="stroke-orange-500 fill-none stroke-[3px]"
-            strokeLinecap="round"
-          />
-
-          <g
-            className={`transition-opacity duration-500 ${
-              scrollProgress > 0 ? "opacity-100" : "opacity-0"
-            }`}
+    <>
+      <div
+        ref={containerRef}
+        className="relative w-full min-h-[800vh] bg-black"
+      >
+        <div className="sticky top-12 w-full min-h-screen flex items-center justify-center flex-col">
+          <div className="flex flex-col gap-4 justify-center items-center">
+            <div className="text-white text-[56px] font-light font-['ITC Garamond Std'] leading-[67.20px]">
+              clear path to accelerate your project
+            </div>
+            <div className="text-white text-[16px] font-light font-['ITC Garamond Std'] leading-[24px]">
+              discover our streamlined process for crafting custom products that
+              perfectly align with your goals.
+            </div>
+          </div>
+          <svg
+            className="w-full h-screen"
+            viewBox="0 0 1000 800"
+            preserveAspectRatio="xMidYMid meet"
           >
-            <circle cx="50" cy="100" r="10" className="fill-orange-500" />
-            <text x="20" y="80" className="text-sm fill-current">
-              discovery phase
-            </text>
-          </g>
+            <defs>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+                <feMerge>
+                  <feMergeNode in="coloredBlur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
 
-          <g
-            className={`transition-opacity duration-500 ${
-              scrollProgress > 0.3 ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <circle cx="600" cy="200" r="6" className="fill-orange-500" />
-            <text x="570" y="180" className="text-sm fill-current">
-              design concept
-            </text>
-          </g>
+            <motion.path
+              d="M 50,100 
+               H 300
+               C 500,100 700,100 800,200
+               C 900,300 900,400 800,500
+               C 700,600 500,600 300,600"
+              className="stroke-[#d6180a] fill-none stroke-[2px]"
+              strokeLinecap="round"
+              filter="url(#glow)"
+              style={{
+                pathLength: scrollYProgress,
+              }}
+            />
 
-          <g
-            className={`transition-opacity duration-500 ${
-              scrollProgress > 0.6 ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <circle cx="900" cy="400" r="6" className="fill-orange-500" />
-            <text x="870" y="380" className="text-sm fill-current">
-              development & testing
-            </text>
-          </g>
+            {/* Planning */}
+            <motion.g style={{ opacity: planningOpacity }}>
+              <line
+                x1="50"
+                y1="100"
+                x2="50"
+                y2="160"
+                className="stroke-[#d6180a] stroke-[1px]"
+              />
+              <circle
+                cx="50"
+                cy="100"
+                r="4"
+                className="fill-[#d6180a]"
+                filter="url(#glow)"
+              />
+              <text x="20" y="80" className="text-[14px] fill-white font-light">
+                Planning
+              </text>
+            </motion.g>
 
-          <g
-            className={`transition-opacity duration-500 ${
-              scrollProgress > 0.9 ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <circle cx="850" cy="650" r="6" className="fill-orange-500" />
-            <text x="820" y="630" className="text-sm fill-current">
-              launch & support
-            </text>
-          </g>
-        </svg>
+            {/* Analysis */}
+            <motion.g style={{ opacity: analysisOpacity }}>
+              <line
+                x1="250"
+                y1="100"
+                x2="250"
+                y2="160"
+                className="stroke-[#d6180a] stroke-[1px]"
+              />
+              <circle
+                cx="250"
+                cy="100"
+                r="4"
+                className="fill-[#d6180a]"
+                filter="url(#glow)"
+              />
+              <text
+                x="220"
+                y="80"
+                className="text-[14px] fill-white font-light"
+              >
+                Analysis
+              </text>
+            </motion.g>
+
+            {/* Design */}
+            <motion.g style={{ opacity: designOpacity }}>
+              <line
+                x1="650"
+                y1="125"
+                x2="650"
+                y2="185"
+                className="stroke-[#d6180a] stroke-[1px]"
+              />
+              <circle
+                cx="650"
+                cy="125"
+                r="4"
+                className="fill-[#d6180a]"
+                filter="url(#glow)"
+              />
+              <text
+                x="620"
+                y="105"
+                className="text-[14px] fill-white font-light"
+              >
+                Design
+              </text>
+            </motion.g>
+
+            {/* Implementation */}
+            <motion.g style={{ opacity: implementationOpacity }}>
+              <line
+                x1="800"
+                y1="200"
+                x2="800"
+                y2="260"
+                className="stroke-[#d6180a] stroke-[1px]"
+              />
+              <circle
+                cx="800"
+                cy="200"
+                r="4"
+                className="fill-[#d6180a]"
+                filter="url(#glow)"
+              />
+              <text
+                x="770"
+                y="180"
+                className="text-[14px] fill-white font-light"
+              >
+                Implementation
+              </text>
+            </motion.g>
+
+            {/* Testing */}
+            <motion.g style={{ opacity: testingOpacity }}>
+              <line
+                x1="800"
+                y1="500"
+                x2="800"
+                y2="560"
+                className="stroke-[#d6180a] stroke-[1px]"
+              />
+              <circle
+                cx="800"
+                cy="500"
+                r="4"
+                className="fill-[#d6180a]"
+                filter="url(#glow)"
+              />
+              <text
+                x="770"
+                y="480"
+                className="text-[14px] fill-white font-light"
+              >
+                Testing
+              </text>
+            </motion.g>
+
+            {/* Maintenance */}
+            <motion.g style={{ opacity: maintenanceOpacity }}>
+              <line
+                x1="300"
+                y1="600"
+                x2="300"
+                y2="660"
+                className="stroke-[#d6180a] stroke-[1px]"
+              />
+              <circle
+                cx="300"
+                cy="600"
+                r="4"
+                className="fill-[#d6180a]"
+                filter="url(#glow)"
+              />
+              <text
+                x="270"
+                y="540"
+                className="text-[14px] fill-white font-light"
+              >
+                Maintenance
+              </text>
+              <text x="270" y="560" className="text-xs fill-white font-light">
+                Continuous improvement and support
+              </text>
+              <text x="270" y="580" className="text-xs fill-white font-light">
+                to ensure long-term success
+              </text>
+            </motion.g>
+          </svg>
+        </div>
       </div>
-    </section>
+    </>
   );
 }
