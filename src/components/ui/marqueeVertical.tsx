@@ -1,4 +1,3 @@
-import { cn } from "@/lib/utils";
 import { Marquee } from "./marquee";
 import Card from "./Card";
 
@@ -38,24 +37,36 @@ const thirdColumn = reviews.slice(columnSize * 2);
 
 export function MarqueeDemoVertical() {
   return (
-    <div className="relative flex h-[500px] w-full flex-row items-center justify-center gap-4 overflow-hidden rounded-lg border bg-background md:shadow-xl">
-      <Marquee pauseOnHover vertical className="[--duration:20s]">
-        {firstColumn.map((review, index) => (
-          <Card key={index} {...review} />
-        ))}
-      </Marquee>
-      <Marquee reverse pauseOnHover vertical className="[--duration:25s]">
-        {secondColumn.map((review, index) => (
-          <Card key={index} {...review} />
-        ))}
-      </Marquee>
-      <Marquee pauseOnHover vertical className="[--duration:30s]">
-        {thirdColumn.map((review, index) => (
-          <Card key={index} {...review} />
-        ))}
-      </Marquee>
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-background"></div>
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background"></div>
-    </div>
+    <>
+      <div className="flex flex-col gap-4 justify-center items-center">
+        <div className="text-white text-5xl font-bold font-['Aileron'] leading-[57.60px]">
+          people love us !
+        </div>
+        <div className="text-white text-[16px] font-light font-['ITC Garamond Std'] leading-[24px]">
+          see why clients rave about us—our excellence and innovation
+          consistently exceed expectations.
+        </div>
+      </div>
+      <div className="relative bg-black flex h-[500px] w-full flex-row items-center justify-center gap-4 overflow-hidden rounded-lg bg-background md:shadow-xl">
+        <Marquee pauseOnHover vertical className="[--duration:20s]">
+          {firstColumn.map((review, index) => (
+            <Card key={index} {...review} />
+          ))}
+        </Marquee>
+        <Marquee reverse pauseOnHover vertical className="[--duration:25s]">
+          {secondColumn.map((review, index) => (
+            <Card key={index} {...review} />
+          ))}
+        </Marquee>
+        <Marquee pauseOnHover vertical className="[--duration:30s]">
+          {thirdColumn.map((review, index) => (
+            <Card key={index} {...review} />
+          ))}
+        </Marquee>
+
+        <div className="absolute top-0 left-0 w-full h-[50px] bg-gradient-to-b from-black to-transparent pointer-events-none z-10"></div>
+        <div className="absolute bottom-0 left-0 w-full h-[50px] bg-gradient-to-t from-black to-transparent pointer-events-none z-10"></div>
+      </div>
+    </>
   );
 }

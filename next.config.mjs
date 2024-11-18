@@ -1,16 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  transpilePackages: ["gsap"],
   images: {
     remotePatterns: [
       {
         protocol: "https",
         hostname: "github.com",
-        pathname: "/**", // Allows all paths under the domain
+        pathname: "/**",
       },
       {
         protocol: "https",
         hostname: "avatar.vercel.sh",
-        pathname: "/**", // Allows all paths under the domain
+        pathname: "/**",
       },
     ],
   },

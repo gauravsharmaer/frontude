@@ -1,17 +1,5 @@
-/* @keyframes loop {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-  
-  .loop-slider .inner {
-    display: flex;
-    width: fit-content;
-  }
-   */
+
+
 
 @keyframes loop {
   0% {
@@ -74,4 +62,12 @@
   height: 20%;
   background-image: linear-gradient(to bottom, #00000000, rgba(0, 0, 0, 0.979));
   z-index: 2;
+}
+
+h1{
+  font-family: Rob;
+  font-size: 2rem;
+  color: white;
+  text-align: center;
+  margin-top: 20px;
 }

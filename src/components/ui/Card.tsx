@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+
 interface CardProps {
   title: string;
   icon: string;
@@ -9,35 +10,42 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ title, icon, onClick }) => {
   return (
     <div
-      className="bg-[#090c1d] border border-[#313131]
-       rounded-xl px-2  w-[20rem] h-44   pt-3"
+      className=" relative  rounded-3xl bg-[#0D0D0D] border border-white/10
+        px-2  w-[20rem] h-44   pt-3"
       onClick={onClick}
     >
-      <div className="rounded-xl">
-        <div
-          className={`text-[#999999] font-medium mx-2
-             font-inter text-[15.13px]  leading-[22.4px] tracking-[-0.32px] text-left`}
-        >
-          {`"${title}"`}
-        </div>
-        <div className="flex items-center gap-2  py-3 mx-2 rounde-xl">
+      {/* Quote Text */}
+      <div className="w-[281.87px] h-[87.17px] left-[24px] top-[25px] absolute text-[#999999] text-[15.12px] font-medium font-['Inter'] leading-snug">
+        {`"${title}"`}
+      </div>
+
+      {/* Profile Section */}
+      <div className="h-[41.98px] left-[24px] top-24 absolute justify-center items-center gap-3 inline-flex">
+        {/* Profile Image */}
+        <div className="w-9 h-9 relative rounded-[999px] flex-col justify-start items-start flex">
           <Image
             src={icon}
             alt="icon"
             width={36}
             height={36}
-            className="rounded-full"
+            className="w-9 h-9 relative rounded-[999px]"
           />
-          <div>
-            <p className="text-[#FFFFFF] font-medium font-inter text-[14.88px]  leading-[22.4px] tracking-[-0.32px] text-left">
-              Belinda Meyers
-            </p>
-            <p className="text-[#999999] font-medium font-inter text-[13.13px]  leading-[22.4px] tracking-[-0.32px] text-left">
-              COO of Friday
-            </p>
+          <div className="w-9 h-9 rounded-[999px] border border-white/10 absolute top-0"></div>
+        </div>
+
+        {/* Profile Info */}
+        <div className="w-60 self-stretch pt-px pb-[1.59px] flex-col justify-center items-start gap-[2.39px] inline-flex">
+          <div className="text-[#fcfcfa] text-[14.88px] font-medium font-['Inter'] leading-snug">
+            Belinda Meyers
+          </div>
+          <div className="text-[#999999] text-[13.12px] font-normal font-['Inter'] leading-tight">
+            COO of Friday
           </div>
         </div>
       </div>
+
+      {/* Border Overlay */}
+      <div className="w-full h-full absolute top-0 left-0 rounded-3xl border border-white/10"></div>
     </div>
   );
 };

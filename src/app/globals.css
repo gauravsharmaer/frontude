@@ -2,8 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "OakSans-SemiBold";
+  src: url("../assets/fonts/oak-sans-cufonfonts/OakSans-SemiBold-BF648bbebd4a4eb.ttf");
+}
+
+@font-face {
+  font-family: "OakSans-Regular";
+  src: url("../assets/fonts/oak-sans-cufonfonts/OakSans-Regular-BF648bbebd37e68.ttf");
+}
+
+@font-face {
+  font-family: "CormorantGaramond-Bold";
+  src: url("../assets//fonts/packota/Pockota-MediumItalic.otf");
+}
+@font-face {
+  font-family: PackotaMedium;
+  src: url("../assets/fonts/packota//Pockota-Medium.otf");
 }
 
 @layer utilities {
@@ -39,7 +60,13 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --color-1: 0 100% 63%;
+    --color-2: 270 100% 63%;
+    --color-3: 210 100% 63%;
+    --color-4: 195 100% 63%;
+    --color-5: 90 100% 63%;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -65,9 +92,13 @@ body {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --color-1: 0 100% 63%;
+    --color-2: 270 100% 63%;
+    --color-3: 210 100% 63%;
+    --color-4: 195 100% 63%;
+    --color-5: 90 100% 63%;
   }
 }
-
 
 @layer utilities {
   .cursor {
@@ -75,7 +106,8 @@ body {
   }
 
   .cursor__ball {
-    @apply fixed top-0 left-0 mix-blend-difference z-[1000];
+    @apply fixed top-0 left-0 mix-blend-difference z-[99999];
+    pointer-events: none !important;
   }
 
   /* Ensure the big cursor ball has a transparent fill */
@@ -89,14 +121,17 @@ body {
 }
 
 body {
-  @apply h-screen bg-black cursor-none m-0 flex font-mono;
+  @apply min-h-screen bg-black cursor-none m-0 font-mono overflow-x-hidden;
 }
 
-.left, .right {
+.left,
+.right {
   @apply h-full w-full flex flex-col justify-center items-center;
 }
 
-.left h1, .left p, .left a {
+.left h1,
+.left p,
+.left a {
   @apply text-white;
 }
 
@@ -104,10 +139,200 @@ body {
   @apply bg-white;
 }
 
-.right h1, .right p, .right a {
+.right h1,
+.right p,
+.right a {
   @apply text-black;
 }
 
 .right a {
   @apply border-b-2 border-black;
+}
+
+h1 {
+  font-family: PackotaMedium;
+  font-size: 80px;
+  color: white;
+  /* text-align: center; */
+  margin-top: 20px;
+}
+
+h1 span {
+  font-family: PackotaMedium;
+}
+
+p {
+  font-family: "OakSans-Regular";
+}
+
+nav {
+  font-family: "OakSans-SemiBold";
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+button {
+  font-family: "OakSans-SemiBold";
+}
+
+.fading_div_right {
+  height: 2px;
+  width: 140px;
+  background-image: linear-gradient(to right, #d6180afa, #00000000);
+  z-index: 2;
+}
+
+.fading_div_left {
+  height: 2px;
+  width: 140px;
+  background-image: linear-gradient(to left, #d6180afa, #00000000);
+  z-index: 2;
+}
+
+/* 
+.line {
+  fill: none;
+}
+
+#svg {
+  margin-top: 60vh;
+} */
+
+/* Add these GSAP-specific styles */
+/* @import url('https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap'); */
+
+/* Timeline Animation Styles */
+/* .timeline-container {
+  position: relative;
+  height: 400vh;
+  background: black;
+} */
+
+/* #svg {
+  max-width: 600px;
+  overflow: visible;
+}
+
+.ball {
+  fill: orange;
+  opacity: 0;
+} */
+
+/* text {
+  fill: orange;
+  font-size: 15px;
+  font-family: "Signika Negative", sans-serif;
+  opacity: 0;
+} */
+
+/* .line {
+  fill: none;
+  stroke: white;
+  stroke-width: 2px;
+} */
+
+/* .theLine {
+  fill: none;
+  stroke: orange;
+  stroke-width: 10px;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+} */
+
+/* Remove duplicate styles and conflicting positioning */
+/* .svg-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+/* Add these styles where appropriate in your CSS file */
+/* .timeline-wrapper {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ball, .theLine {
+  opacity: 0;
+  visibility: hidden;
+} */
+/* .sticky {
+  position: sticky;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.timeline-container {
+  min-height: 400vh;
+  position: relative;
+} */
+
+/* Add this new style to ensure cursor remains hidden on all elements */
+* {
+  cursor: none !important;
+}
+
+#__next,
+.main-content {
+  isolation: isolate;
+}
+
+/* Update cursor styles */
+.cursor-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.cursor__ball {
+  position: fixed;
+  top: 0;
+  left: 0;
+  mix-blend-mode: difference;
+  z-index: 999999;
+  pointer-events: none !important;
+}
+
+.cursor__ball--big {
+  width: 30px;
+  height: 30px;
+}
+
+.cursor__ball--small {
+  width: 10px;
+  height: 10px;
+}
+
+.cursor__ball--big svg circle {
+  fill: rgba(255, 255, 255, 0.2);
+}
+
+.cursor__ball--small svg circle {
+  fill: #ffffff;
+}
+
+/* Ensure all elements don't show default cursor */
+* {
+  cursor: none !important;
+}
+
+/* Add stacking context */
+body {
+  @apply min-h-screen bg-black m-0 font-mono overflow-x-hidden;
+  cursor: none !important;
 }
