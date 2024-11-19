@@ -7,7 +7,7 @@ export function TextRevealDemo() {
         <TextReveal
           text="Frontude will change the way you design. 
                 Experience a new level of creativity and efficiency in your projects."
-          className="hoverable text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-[90%] sm:max-w-[80%] md:max-w-[70%]"
+          className="hoverable text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-[90%] sm:max-w-[80%] md:max-w-[70%] font-inter"
         />
       </div>
     </div>

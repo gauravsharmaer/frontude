@@ -4,7 +4,7 @@ import "./globals.css";
 import { HomeBackground } from "@/components/ui/Background";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
-
+import { Inter } from "next/font/google";
 config.autoAddCss = false;
 
 const geistSans = localFont({
@@ -16,6 +16,16 @@ const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const PocKota = localFont({
+  src: "./fonts/Pockota-Medium.otf",
+  variable: "--font-poc-kota",
 });
 
 export const metadata: Metadata = {
@@ -31,7 +41,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${PocKota.variable} antialiased `}
       >
         <HomeBackground>{children}</HomeBackground>
       </body>

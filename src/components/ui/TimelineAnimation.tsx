@@ -179,10 +179,10 @@ export default function Component() {
       >
         <div className="sticky top-12 w-full min-h-screen flex items-center justify-center flex-col">
           <div className="flex flex-col gap-4 justify-center items-center px-4 md:px-8">
-            <div className="text-white text-2xl md:text-[56px] font-light font-['ITC Garamond Std'] leading-tight md:leading-[67.20px] text-center">
-              clear path to accelerate your project
+            <div className="text-white text-2xl md:text-[56px] font-light font-pocKota leading-tight md:leading-[67.20px] text-center">
+              Clear path to accelerate your project
             </div>
-            <div className="text-white text-sm md:text-[16px] font-light font-['ITC Garamond Std'] leading-normal md:leading-[24px] text-center max-w-2xl">
+            <div className="text-white text-sm md:text-[16px] font-light font-inter leading-normal md:leading-[24px] text-center max-w-2xl">
               discover our streamlined process for crafting custom products that
               perfectly align with your goals.
             </div>
@@ -235,7 +235,7 @@ export default function Component() {
               <text
                 x="70"
                 y="80"
-                className="text-[12px] md:text-[14px] fill-white font-light"
+                className="text-[12px] md:text-[14px] fill-white font-inter"
               >
                 Planning
               </text>
@@ -260,7 +260,7 @@ export default function Component() {
               <text
                 x="220"
                 y="80"
-                className="text-[14px] fill-white font-light"
+                className="text-[14px] fill-white font-inter"
               >
                 Analysis
               </text>
@@ -285,7 +285,7 @@ export default function Component() {
               <text
                 x="620"
                 y="105"
-                className="text-[14px] fill-white font-light"
+                className="text-[14px] fill-white font-inter"
               >
                 Design
               </text>
@@ -310,7 +310,7 @@ export default function Component() {
               <text
                 x="770"
                 y="180"
-                className="text-[14px] fill-white font-light"
+                className="text-[14px] fill-white font-inter"
               >
                 Implementation
               </text>
@@ -335,7 +335,7 @@ export default function Component() {
               <text
                 x="770"
                 y="480"
-                className="text-[14px] fill-white font-light"
+                className="text-[14px] fill-white font-inter"
               >
                 Testing
               </text>
@@ -360,21 +360,21 @@ export default function Component() {
               <text
                 x="270"
                 y="540"
-                className="text-[12px] md:text-[14px] fill-white font-light"
+                className="text-[12px] md:text-[14px] fill-white font-inter"
               >
                 Maintenance
               </text>
               <text
                 x="270"
                 y="560"
-                className="text-[10px] md:text-xs fill-white font-light"
+                className="text-[10px] md:text-xs fill-white font-inter"
               >
                 Continuous improvement and support
               </text>
               <text
                 x="270"
                 y="580"
-                className="text-[10px] md:text-xs fill-white font-light"
+                className="text-[10px] md:text-xs fill-white font-inter"
               >
                 to ensure long-term success
               </text>
