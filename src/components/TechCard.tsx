@@ -3,14 +3,14 @@ import { Layers } from "lucide-react";
 export default function Component() {
   return (
     <div
-      className="w-[400px] h-[437px] relative rounded-[20px] overflow-hidden"
+      className="w-full sm:w-[350px] md:w-[400px] h-[437px] relative rounded-[20px] overflow-hidden"
       style={{
         backgroundImage: `url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CARD-F3qfquhy2m8N4AZkgG58HCcr1kgr9K.svg')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      <div className="relative z-10 p-8 flex flex-col h-full">
+      <div className="relative z-10 p-6 sm:p-8 flex flex-col h-full">
         {/* Icon section with gradient border */}
         <div className="h-12 w-12 rounded-full  bg-gradient-to-br from-[#ed482f] to-white p-[1px] mb-12  border border-none border-[#df513c]">
           <div className="h-full w-full rounded-full bg-black/70 backdrop-blur-sm flex items-center justify-center">
@@ -19,12 +19,12 @@ export default function Component() {
         </div>
 
         {/* Text content */}
-        <div className="space-y-6">
-          <h2 className="text-[40px] font-bold text-white leading-[1.1]">
+        <div className="space-y-4 sm:space-y-6">
+          <h2 className="text-[32px] sm:text-[40px] font-bold text-white leading-[1.1]">
             App Development
           </h2>
 
-          <p className="text-[17px] leading-[1.6] text-gray-300 max-w-[95%]">
+          <p className="text-[15px] sm:text-[17px] leading-[1.6] text-gray-300 max-w-[95%]">
             We design web, mobile, and desktop apps that are visually stunning
             and user- friendly. Our expert team ensures every app meets your
             needs and exceeds expectations.

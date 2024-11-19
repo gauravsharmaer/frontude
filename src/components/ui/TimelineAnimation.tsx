@@ -175,20 +175,20 @@ export default function Component() {
     <>
       <div
         ref={containerRef}
-        className="relative w-full min-h-[800vh] bg-black"
+        className="relative w-full min-h-[800vh] bg-black/70"
       >
         <div className="sticky top-12 w-full min-h-screen flex items-center justify-center flex-col">
-          <div className="flex flex-col gap-4 justify-center items-center">
-            <div className="text-white text-[56px] font-light font-['ITC Garamond Std'] leading-[67.20px]">
+          <div className="flex flex-col gap-4 justify-center items-center px-4 md:px-8">
+            <div className="text-white text-2xl md:text-[56px] font-light font-['ITC Garamond Std'] leading-tight md:leading-[67.20px] text-center">
               clear path to accelerate your project
             </div>
-            <div className="text-white text-[16px] font-light font-['ITC Garamond Std'] leading-[24px]">
+            <div className="text-white text-sm md:text-[16px] font-light font-['ITC Garamond Std'] leading-normal md:leading-[24px] text-center max-w-2xl">
               discover our streamlined process for crafting custom products that
               perfectly align with your goals.
             </div>
           </div>
           <svg
-            className="w-full h-screen"
+            className="w-full h-[60vh] md:h-screen"
             viewBox="0 0 1000 800"
             preserveAspectRatio="xMidYMid meet"
           >
@@ -203,12 +203,12 @@ export default function Component() {
             </defs>
 
             <motion.path
-              d="M 50,100 
+              d="M 100,100 
                H 300
                C 500,100 700,100 800,200
                C 900,300 900,400 800,500
                C 700,600 500,600 300,600"
-              className="stroke-[#d6180a] fill-none stroke-[2px]"
+              className="stroke-[#d6180a] fill-none stroke-[1px] md:stroke-[2px]"
               strokeLinecap="round"
               filter="url(#glow)"
               style={{
@@ -219,20 +219,24 @@ export default function Component() {
             {/* Planning */}
             <motion.g style={{ opacity: planningOpacity }}>
               <line
-                x1="50"
+                x1="100"
                 y1="100"
-                x2="50"
-                y2="160"
+                x2="100"
+                y2="140"
                 className="stroke-[#d6180a] stroke-[1px]"
               />
               <circle
-                cx="50"
+                cx="100"
                 cy="100"
-                r="4"
+                r="3"
                 className="fill-[#d6180a]"
                 filter="url(#glow)"
               />
-              <text x="20" y="80" className="text-[14px] fill-white font-light">
+              <text
+                x="70"
+                y="80"
+                className="text-[12px] md:text-[14px] fill-white font-light"
+              >
                 Planning
               </text>
             </motion.g>
@@ -343,27 +347,35 @@ export default function Component() {
                 x1="300"
                 y1="600"
                 x2="300"
-                y2="660"
+                y2="640"
                 className="stroke-[#d6180a] stroke-[1px]"
               />
               <circle
                 cx="300"
                 cy="600"
-                r="4"
+                r="3"
                 className="fill-[#d6180a]"
                 filter="url(#glow)"
               />
               <text
                 x="270"
                 y="540"
-                className="text-[14px] fill-white font-light"
+                className="text-[12px] md:text-[14px] fill-white font-light"
               >
                 Maintenance
               </text>
-              <text x="270" y="560" className="text-xs fill-white font-light">
+              <text
+                x="270"
+                y="560"
+                className="text-[10px] md:text-xs fill-white font-light"
+              >
                 Continuous improvement and support
               </text>
-              <text x="270" y="580" className="text-xs fill-white font-light">
+              <text
+                x="270"
+                y="580"
+                className="text-[10px] md:text-xs fill-white font-light"
+              >
                 to ensure long-term success
               </text>
             </motion.g>

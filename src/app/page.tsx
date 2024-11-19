@@ -10,8 +10,8 @@ import TechCardCollection from "../components/TechCardCollection";
 import { RainbowButtonDemo } from "../components/ui/RainbowButtonui";
 import Background from "../assets/image.jpg";
 import { ParticlesDemo } from "@/components/ui/particlesui";
-import Services from "@/components/Services";
-import WhyUs from "@/components/WhyUS";
+// import Services from "@/components/Services";
+// import WhyUs from "@/components/WhyUS";
 import { TextRevealDemo } from "../components/TextRevealDemo";
 import TimelineAnimation from "@/components/ui/TimelineAnimation";
 
@@ -22,7 +22,8 @@ const Nav = () => {
     <nav className="absolute top-4 left-0 right-0 z-50 px-4 md:px-12 py-3">
       <div
         className="relative flex flex-col md:flex-row items-center justify-between 
-      rounded-lg backdrop-blur-md text-base md:text-[20px] w-full text-white py-4 px-4 md:px-7 border border-white/20 shadow-lg overflow-hidden"
+      rounded-lg backdrop-blur-md text-base md:text-[20px] w-full text-white py-4 px-4 md:px-7
+       border border-white/20 shadow-lg overflow-hidden"
       >
         <div className="flex items-center justify-between w-full md:w-auto">
           <div className="flex items-center justify-center relative">
@@ -134,9 +135,10 @@ const Home = () => {
     <CursorWrapper>
       <Nav />
       <HomeBackground>
-        <main className="flex flex-col w-full relative">
+        <main className="flex flex-col w-full relative gap-20">
           <section
-            className="min-h-screen w-full flex items-center justify-center relative overflow-hidden px-4 mt-4"
+            className="min-h-[calc(100vh-4rem)] w-full flex items-center
+             justify-center relative overflow-hidden px-4 py-20 md:py-0 md:mt-4 "
             onMouseMove={handleMouseMove}
           >
             <Image
@@ -147,10 +149,24 @@ const Home = () => {
               className="-z-30 h-full w-full"
               priority
               placeholder="blur"
-              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx0cHBwcHy4lJyctLzkyMi8nLy0wO0BCPzhLPS0yRWFFS1NWW1xfOUNXZWVfbVZbW1v/2wBDARUXFx4aHjshITs7W1FbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1v/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD
+              /4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAE
+              AAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADT
+              LQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+              AAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPA
+              AAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAA
+              AAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJ
+              YWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACS
+              gAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANW
+              QAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAb
+              ABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx0cHBwcHy4lJyctL
+              zkyMi8nLy0wO0BCPzhLPS0yRWFFS1NWW1xfOUNXZWVfbVZbW1v/2wBDARUXFx4aHjshITs7W1Fb
+              W1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1v/wAARCAAI
+              AAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA
+              /8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
             />
 
-            {windowSize.width > 768 && (
+            {windowSize.width > 600 && (
               <div
                 className="absolute inset-0 bg-black/70 -z-20 transition-[mask-position] duration-300 ease-in-out"
                 style={{
@@ -195,23 +211,23 @@ const Home = () => {
 
             <ParticlesDemo />
 
-            <div className="flex flex-col items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h1 className="text-white text-center text-4xl sm:text-5xl md:text-6xl lg:text-[80px] font-bold relative">
+            <div className="flex flex-col items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-0">
+              <h1 className="text-white text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] font-bold relative leading-tight">
                 Crafting digital{" "}
                 <span className="text-gradient">masterpieces</span>
               </h1>
-              <div className="flex items-center gap-4 mt-8 md:mt-12">
+              <div className="flex items-center gap-2 sm:gap-4 mt-6 sm:mt-8 md:mt-12">
                 <div className="hidden md:block fading_div_left"></div>
-                <strong className="text-white text-lg md:text-2xl">
+                <strong className="text-white text-base sm:text-lg md:text-xl lg:text-2xl">
                   At Frontude
                 </strong>
                 <div className="hidden md:block fading_div_right"></div>
               </div>
-              <p className="text-center text-white text-base sm:text-lg md:text-2xl mt-4 max-w-3xl">
+              <p className="text-center text-white text-sm sm:text-base md:text-lg lg:text-2xl mt-4 max-w-3xl px-4">
                 We bring your ideas to life, creating standout products that
                 fuel your growth and success.
               </p>
-              <div className="relative mt-12 md:mt-20">
+              <div className="relative mt-8 sm:mt-10 md:mt-16 lg:mt-20">
                 <RainbowButtonDemo />
               </div>
             </div>
@@ -219,17 +235,17 @@ const Home = () => {
 
           <section className="w-full">
             <div className="flex flex-col gap-16 md:gap-32">
-              {/* Timeline Section */}
+              <div className="w-full flex justify-center items-center">
+                <TextRevealDemo />
+              </div>
               <div className="flex flex-col gap-8">
                 <TimelineAnimation />
               </div>
 
-              {/* Tech Cards Section */}
               <div className="flex flex-col gap-8">
                 <TechCardCollection />
               </div>
 
-              {/* Testimonials Section */}
               <div className="flex flex-col gap-8">
                 <MarqueeDemoVertical />
               </div>
@@ -238,15 +254,12 @@ const Home = () => {
 
           <section className="w-full py-16 ">
             <div className="container mx-auto px-4 flex flex-col gap-16 md:gap-32">
-              <div className="w-full">
-                <TextRevealDemo />
-              </div>
-              <div className="w-full flex justify-center items-center">
+              {/* <div className="w-full flex justify-center items-center">
                 <Services />
-              </div>
-              <div className="w-full flex justify-center items-center">
+              </div> */}
+              {/* <div className="w-full flex justify-center items-center">
                 <WhyUs />
-              </div>
+              </div> */}
             </div>
           </section>
         </main>
