@@ -24,7 +24,7 @@ export default function Component() {
             App Development
           </h2>
 
-          <p className="text-[15px] sm:text-[17px] leading-[1.6] text-gray-300 max-w-[95%]">
+          <p className="text-[15px] sm:text-[17px] leading-[1.6] text-gray-300 max-w-[95%] font-inter">
             We design web, mobile, and desktop apps that are visually stunning
             and user- friendly. Our expert team ensures every app meets your
             needs and exceeds expectations.
@@ -35,7 +35,7 @@ export default function Component() {
         <div className="mt-auto pt-8">
           <a
             href="#"
-            className="group inline-flex items-center text-[18px] text-white font-medium hover:opacity-90 transition-opacity"
+            className="group inline-flex items-center text-[18px] text-white font-medium hover:opacity-90 transition-opacity font-inter"
           >
             Start project
             <svg

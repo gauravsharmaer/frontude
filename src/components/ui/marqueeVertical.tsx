@@ -5,27 +5,32 @@ import Card from "./Card";
 const reviews = [
   {
     title:
-      "I've never seen anything like this before. It's amazing. I love it.",
+      "Conversion exceeded our expectations!.Their approach to paid advertising is unparalleled, resulting in a substantial growth in our revenue stream.",
     icon: "https://avatar.vercel.sh/jack",
   },
   {
-    title: "I don't know what to say. I'm speechless. This is amazing.",
+    title:
+      "Conversion exceeded our expectations!.Their approach to paid advertising is unparalleled, resulting in a substantial growth in our revenue stream.",
     icon: "https://avatar.vercel.sh/jill",
   },
   {
-    title: "I'm at a loss for words. This is amazing. I love it.",
+    title:
+      "Conversion exceeded our expectations!.Their approach to paid advertising is unparalleled, resulting in a substantial growth in our revenue stream.",
     icon: "https://avatar.vercel.sh/john",
   },
   {
-    title: "The best solution I've ever seen. Absolutely fantastic!",
+    title:
+      "Conversion exceeded our expectations!.Their approach to paid advertising is unparalleled, resulting in a substantial growth in our revenue stream.",
     icon: "https://avatar.vercel.sh/sarah",
   },
   {
-    title: "Game-changing platform. Can't imagine work without it.",
+    title:
+      "Conversion exceeded our expectations!.Their approach to paid advertising is unparalleled, resulting in a substantial growth in our revenue stream.",
     icon: "https://avatar.vercel.sh/mike",
   },
   {
-    title: "Revolutionary approach to solving our daily challenges.",
+    title:
+      "Conversion exceeded our expectations!.Their approach to paid advertising is unparalleled, resulting in a substantial growth in our revenue stream.",
     icon: "https://avatar.vercel.sh/emma",
   },
 ];
@@ -71,10 +76,10 @@ export function MarqueeDemoVertical() {
   return (
     <>
       <div className="flex flex-col gap-4 justify-center items-center px-4 text-center">
-        <div className="text-white text-3xl md:text-4xl lg:text-5xl font-bold font-['Aileron'] leading-tight md:leading-[57.60px]">
+        <div className="text-white text-3xl md:text-4xl lg:text-5xl font-bold font-pocKota leading-tight md:leading-[57.60px]">
           people love us !
         </div>
-        <div className="text-white text-sm md:text-[16px] font-light font-['ITC Garamond Std'] leading-normal md:leading-[24px] max-w-2xl">
+        <div className="text-white text-sm md:text-[16px] font-light font-inter leading-normal md:leading-[24px] max-w-2xl">
           see why clients rave about us—our excellence and innovation
           consistently exceed expectations.
         </div>

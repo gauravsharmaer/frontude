@@ -211,23 +211,27 @@ const Home = () => {
 
             <ParticlesDemo />
 
-            <div className="flex flex-col items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-0">
-              <h1 className="text-white text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] font-bold relative leading-tight">
+            <div className="flex flex-col items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-0 gap-12">
+              <h1 className="text-white font-pocKota text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] font-bold relative leading-tight">
                 Crafting digital{" "}
                 <span className="text-gradient">masterpieces</span>
               </h1>
-              <div className="flex items-center gap-2 sm:gap-4 mt-6 sm:mt-8 md:mt-12">
+              {/* <div className="flex items-center gap-2 sm:gap-4 mt-6 sm:mt-8 md:mt-12">
                 <div className="hidden md:block fading_div_left"></div>
-                <strong className="text-white text-base sm:text-lg md:text-xl lg:text-2xl">
+                <strong className="text-white text-base sm:text-lg md:text-xl lg:text-2xl font-inter">
                   At Frontude
                 </strong>
                 <div className="hidden md:block fading_div_right"></div>
-              </div>
-              <p className="text-center text-white text-sm sm:text-base md:text-lg lg:text-2xl mt-4 max-w-3xl px-4">
-                We bring your ideas to life, creating standout products that
-                fuel your growth and success.
+              </div> */}
+              <p
+                className="text-center 
+               text-white text-sm sm:text-base md:text-lg lg:text-2xl  font-inter"
+              >
+                We turn your boldest ideas into remarkable realities, creating
+                groundbreaking products that ignite your growth and empower your
+                journey to success.
               </p>
-              <div className="relative mt-8 sm:mt-10 md:mt-16 lg:mt-20">
+              <div className="relative  mt-4 ">
                 <RainbowButtonDemo />
               </div>
             </div>
