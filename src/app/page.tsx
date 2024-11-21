@@ -233,7 +233,7 @@ const Home = () => {
           </section>
 
           <section className="w-full">
-            <div className="flex flex-col gap-16 md:gap-32">
+            <div className="flex flex-col gap-16">
               <div className="w-full flex justify-center items-center">
                 <TextRevealDemo />
               </div>
@@ -241,25 +241,18 @@ const Home = () => {
                 <TimelineAnimation />
               </div>
 
-              <div className="flex flex-col gap-8">
+              <div className="flex flex-col ">
                 <TechCardCollection />
               </div>
 
-              <div className="flex flex-col gap-8">
+              <div className="flex flex-col mt-8">
                 <MarqueeDemoVertical />
               </div>
             </div>
           </section>
 
           <section className="w-full py-16 ">
-            <div className="container mx-auto px-4 flex flex-col gap-16 md:gap-32">
-              {/* <div className="w-full flex justify-center items-center">
-                <Services />
-              </div> */}
-              {/* <div className="w-full flex justify-center items-center">
-                <WhyUs />
-              </div> */}
-            </div>
+            <div className="container mx-auto px-4 flex flex-col gap-16 md:gap-32"></div>
           </section>
         </main>
       </HomeBackground>

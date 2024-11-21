@@ -76,10 +76,14 @@ export function MarqueeDemoVertical() {
   return (
     <>
       <div className="flex flex-col gap-4 justify-center items-center px-4 text-center">
-        <div className="text-white text-3xl md:text-4xl lg:text-5xl font-bold font-pocKota leading-tight md:leading-[57.60px]">
-          people love us !
+        <div className="text-white text-3xl md:text-4xl lg:text-5xl font-bold font-pocKota leading-tight md:leading-[57.60px] mb-5">
+          people{" "}
+          <span className="font-['ITC Garamond Std'] leading-[67.20px] font-extralight">
+            love{" "}
+          </span>{" "}
+          us !
         </div>
-        <div className="text-white text-sm md:text-[16px] font-light font-inter leading-normal md:leading-[24px] max-w-2xl">
+        <div className="opacity-70 text-white text-sm md:text-[16px] font-light font-inter leading-normal md:leading-[24px] max-w-3xl mb-14">
           see why clients rave about us—our excellence and innovation
           consistently exceed expectations.
         </div>

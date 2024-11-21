@@ -30,9 +30,13 @@ export default function Component() {
         <div className="sticky top-12 w-full min-h-screen flex items-center justify-center flex-col">
           <div className="flex flex-col gap-4 justify-center items-center px-4 md:px-8">
             <div className="text-white text-2xl md:text-[56px] font-light font-pocKota leading-tight md:leading-[67.20px] text-center">
-              Clear path to accelerate your project
+              Clear path to
+              <span className="font-['ITC Garamond Std'] leading-[67.20px] font-extralight pl-2">
+                accelerate
+              </span>{" "}
+              your project
             </div>
-            <div className="text-white text-sm md:text-[16px] font-light font-inter leading-normal md:leading-[24px] text-center max-w-2xl">
+            <div className=" opacity-70 text-white text-sm md:text-[16px] font-light font-inter leading-normal md:leading-[24px] text-center max-w-3xl">
               discover our streamlined process for crafting custom products that
               perfectly align with your goals.
             </div>
