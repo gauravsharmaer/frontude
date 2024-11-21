@@ -76,13 +76,37 @@ const Particles: React.FC<ParticlesProps> = ({
   const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
+  const [particleCount, setParticleCount] = useState(quantity);
+  const frameRef = useRef<number>();
+  const lastFrameTimeRef = useRef<number>(0);
+  const FPS_LIMIT = 30; // Limit FPS for better performance
+  const FRAME_TIME = 1000 / FPS_LIMIT;
+
+  useEffect(() => {
+    // Detect device capabilities and adjust particle count
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const isLowPerfDevice = !window.matchMedia("(min-device-memory: 4gb)")
+      .matches;
+    const width = window.innerWidth;
+
+    let adjustedCount = quantity;
+    if (isMobile) {
+      adjustedCount = Math.floor(quantity * 0.3); // 30% for mobile
+    } else if (isLowPerfDevice) {
+      adjustedCount = Math.floor(quantity * 0.5); // 50% for low-perf devices
+    } else if (width < 1024) {
+      adjustedCount = Math.floor(quantity * 0.7); // 70% for smaller screens
+    }
+
+    setParticleCount(Math.min(adjustedCount, 150)); // Cap at 150 particles
+  }, [quantity]);
 
   useEffect(() => {
     if (canvasRef.current) {
       context.current = canvasRef.current.getContext("2d");
     }
     initCanvas();
-    animate();
+    animate(0);
     window.addEventListener("resize", initCanvas);
 
     return () => {
@@ -97,6 +121,14 @@ const Particles: React.FC<ParticlesProps> = ({
   useEffect(() => {
     initCanvas();
   }, [refresh]);
+
+  useEffect(() => {
+    return () => {
+      if (frameRef.current) {
+        cancelAnimationFrame(frameRef.current);
+      }
+    };
+  }, []);
 
   const initCanvas = () => {
     resizeCanvas();
@@ -199,74 +231,68 @@ const Particles: React.FC<ParticlesProps> = ({
 
   const drawParticles = () => {
     clearContext();
-    const particleCount = quantity;
     for (let i = 0; i < particleCount; i++) {
       const circle = circleParams();
       drawCircle(circle);
     }
   };
 
-  const remapValue = (
-    value: number,
-    start1: number,
-    end1: number,
-    start2: number,
-    end2: number
-  ): number => {
-    const remapped =
-      ((value - start1) * (end2 - start2)) / (end1 - start1) + start2;
-    return remapped > 0 ? remapped : 0;
-  };
+  const animate = (timestamp: number) => {
+    if (!context.current) return;
 
-  const animate = () => {
+    // Throttle frame rate
+    const deltaTime = timestamp - lastFrameTimeRef.current;
+    if (deltaTime < FRAME_TIME) {
+      frameRef.current = requestAnimationFrame(animate);
+      return;
+    }
+    lastFrameTimeRef.current = timestamp;
+
     clearContext();
+
     circles.current.forEach((circle: Circle, i: number) => {
-      // Handle the alpha value
-      const edge = [
-        circle.x + circle.translateX - circle.size, // distance from left edge
-        canvasSize.current.w - circle.x - circle.translateX - circle.size, // distance from right edge
-        circle.y + circle.translateY - circle.size, // distance from top edge
-        canvasSize.current.h - circle.y - circle.translateY - circle.size, // distance from bottom edge
-      ];
-      const closestEdge = edge.reduce((a, b) => Math.min(a, b));
-      const remapClosestEdge = parseFloat(
-        remapValue(closestEdge, 0, 20, 0, 1).toFixed(2)
-      );
-      if (remapClosestEdge > 1) {
-        circle.alpha += 0.02;
-        if (circle.alpha > circle.targetAlpha) {
-          circle.alpha = circle.targetAlpha;
-        }
-      } else {
-        circle.alpha = circle.targetAlpha * remapClosestEdge;
+      // Basic performance optimization - update fewer particles on low-end devices
+      if (circles.current.length > 50 && i % 2 !== 0) {
+        drawCircle(circle, true);
+        return;
       }
-      circle.x += circle.dx + vx;
-      circle.y += circle.dy + vy;
-      circle.translateX +=
-        (mouse.current.x / (staticity / circle.magnetism) - circle.translateX) /
-        ease;
-      circle.translateY +=
-        (mouse.current.y / (staticity / circle.magnetism) - circle.translateY) /
-        ease;
+
+      // Optimized movement calculations
+      const dx = (circle.dx + vx) * 0.5;
+      const dy = (circle.dy + vy) * 0.5;
+
+      circle.x += dx;
+      circle.y += dy;
+
+      // Simplified alpha transition
+      circle.alpha = Math.min(circle.alpha + 0.02, circle.targetAlpha);
+
+      // Optimized magnetic effect
+      if (Math.abs(mouse.current.x) + Math.abs(mouse.current.y) > 1) {
+        circle.translateX +=
+          (mouse.current.x / (staticity / circle.magnetism) -
+            circle.translateX) /
+          ease;
+        circle.translateY +=
+          (mouse.current.y / (staticity / circle.magnetism) -
+            circle.translateY) /
+          ease;
+      }
 
       drawCircle(circle, true);
 
-      // circle gets out of the canvas
+      // Reset particles that go out of bounds
       if (
         circle.x < -circle.size ||
         circle.x > canvasSize.current.w + circle.size ||
         circle.y < -circle.size ||
         circle.y > canvasSize.current.h + circle.size
       ) {
-        // remove the circle from the array
-        circles.current.splice(i, 1);
-        // create a new circle
-        const newCircle = circleParams();
-        drawCircle(newCircle);
-        // update the circle position
+        circles.current[i] = circleParams();
       }
     });
-    window.requestAnimationFrame(animate);
+
+    frameRef.current = requestAnimationFrame(animate);
   };
 
   return (

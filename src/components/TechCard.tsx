@@ -20,7 +20,7 @@ export default function Component() {
 
         {/* Text content */}
         <div className="space-y-4 sm:space-y-6">
-          <h2 className="text-[32px] sm:text-[40px] font-bold text-white leading-[1.1]">
+          <h2 className="text-[32px] sm:text-[32px] font-bold text-white leading-[1.1] font-inter">
             App Development
           </h2>
 
