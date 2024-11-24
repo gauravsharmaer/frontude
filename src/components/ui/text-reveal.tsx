@@ -1,3 +1,4 @@
+//text reaveal
 "use client";
 
 import { FC, ReactNode, useRef } from "react";
@@ -18,7 +19,7 @@ export const TextRevealByWord: FC<TextRevealByWordProps> = ({
 
   const { scrollYProgress } = useScroll({
     target: targetRef,
-    offset: ["start 80%", "end 20%"],
+    offset: ["start 90%", "end 40%"],
   });
   const words = text.split(" ");
 
@@ -29,22 +30,8 @@ export const TextRevealByWord: FC<TextRevealByWordProps> = ({
     >
       <p className="flex flex-wrap p-5 text-4xl font-bold md:text-5xl lg:text-6xl justify-center">
         {words.map((word, i) => {
-          const firstHalfDuration = 0.4;
-          const secondHalfDuration = 0.35;
-          const midPoint = 4;
-
-          let start, end;
-          if (i <= midPoint) {
-            start = (i / midPoint) * firstHalfDuration;
-            end = start + firstHalfDuration / midPoint + 0.1;
-          } else {
-            const remainingWords = words.length - midPoint - 1;
-            const position = i - midPoint;
-            start =
-              firstHalfDuration +
-              (position / remainingWords) * secondHalfDuration;
-            end = start + secondHalfDuration / remainingWords + 0.1;
-          }
+          const start = (i / words.length) * 0.9;
+          const end = start + 0.1;
 
           return (
             <Word key={i} progress={scrollYProgress} range={[start, end]}>
@@ -67,7 +54,7 @@ const Word: FC<WordProps> = ({ children, progress, range }) => {
   const opacity = useTransform(progress, range, [0, 1]);
   return (
     <span className="relative mx-1 lg:mx-2.5">
-      <span className="absolute opacity-10 text-white">{children}</span>
+      <span className="absolute opacity-5 text-white">{children}</span>
       <motion.span style={{ opacity }} className="text-white relative">
         {children}
       </motion.span>

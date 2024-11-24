@@ -3,7 +3,7 @@ import TechCard from "./TechCard";
 const TechCardCollection = () => {
   return (
     <div className="flex flex-col gap-6  px-4 sm:px-6 md:px-8">
-      <div className="flex flex-col gap-4 justify-center items-center text-center">
+      <div className="flex flex-col gap-6 justify-center items-center text-center">
         <div className="text-white text-3xl sm:text-4xl md:text-5xl  font-pocKota leading-tight sm:leading-[57.60px]">
           how frontude can elevate your business?
         </div>
@@ -13,7 +13,7 @@ const TechCardCollection = () => {
           expectations.
         </div>
       </div>
-      <div className="flex items-center justify-center mt-8 sm:mt-16">
+      <div className="flex items-center justify-center mt-8 mb-6">
         <div className="flex flex-col sm:flex-row flex-wrap gap-4 items-center">
           <TechCard />
           <TechCard />

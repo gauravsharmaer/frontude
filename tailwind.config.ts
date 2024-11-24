@@ -63,12 +63,14 @@ const config: Config = {
       },
       animation: {
         meteor: "meteor 5s linear infinite",
-        marquee: "marquee var(--duration) infinite linear",
+        marquee: "marquee 25s linear infinite",
+        marquee2: "marquee2 25s linear infinite",
         "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
         rainbow: "rainbow var(--speed, 2s) infinite linear",
         shine: "shine 4s linear infinite",
         "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
         ripple: "ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite",
+        "loop-scroll": "loop-scroll 100s linear infinite",
       },
       keyframes: {
         meteor: {
@@ -85,12 +87,12 @@ const config: Config = {
           },
         },
         marquee: {
-          from: {
-            transform: "translateX(0)",
-          },
-          to: {
-            transform: "translateX(calc(-100% - var(--gap)))",
-          },
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
+        marquee2: {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(0%)" },
         },
         "marquee-vertical": {
           from: {
@@ -138,6 +140,10 @@ const config: Config = {
           "50%": {
             transform: "translate(-50%, -50%) scale(0.9)",
           },
+        },
+        "loop-scroll": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-100%)" },
         },
       },
       fontFamily: {

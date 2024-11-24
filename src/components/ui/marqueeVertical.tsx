@@ -76,7 +76,7 @@ export function MarqueeDemoVertical() {
   return (
     <>
       <div className="flex flex-col gap-4 justify-center items-center px-4 text-center">
-        <div className="text-white text-3xl md:text-4xl lg:text-5xl font-bold font-pocKota leading-tight md:leading-[57.60px] mb-5">
+        <div className="text-white text-3xl md:text-4xl lg:text-5xl font-bold font-pocKota leading-tight md:leading-[57.60px] ">
           people{" "}
           <span className="font-['ITC Garamond Std'] leading-[67.20px] font-extralight">
             love{" "}

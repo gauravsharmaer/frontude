@@ -12,6 +12,12 @@ import Background from "../assets/image.jpg";
 import { ParticlesDemo } from "@/components/ui/particlesui";
 import { TextRevealDemo } from "../components/TextRevealDemo";
 import TimelineAnimation from "@/components/ui/TimelineAnimation";
+import icon1 from "../assets/icon1.svg";
+import icon2 from "../assets/icon2.svg";
+import icon3 from "../assets/icon3.svg";
+import icon4 from "../assets/icon4.svg";
+import icon5 from "../assets/icon5.svg";
+import icon6 from "../assets/icon6.svg";
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,7 +26,7 @@ const Nav = () => {
     <nav className="absolute top-4 left-0 right-0 z-50 px-4 md:px-12 py-3">
       <div
         className="relative flex flex-col md:flex-row items-center justify-between 
-        text-base md:text-[20px] w-full text-white overflow-hidden"
+        text-base md:text-[16px] w-full text-white overflow-hidden"
       >
         <div className="flex items-center justify-between w-full md:w-auto">
           <div className="flex items-center justify-center relative">
@@ -55,7 +61,7 @@ const Nav = () => {
           className={`${
             isMenuOpen ? "flex" : "hidden"
           } md:flex flex-col md:flex-row  py-4 px-4 md:px-7
-        shadow-lg items-center rounded-lg gap-4 mt-4 md:mt-0 md:ml-12 relative w-full md:w-auto backdrop-blur-md border border-white/20`}
+        shadow-lg items-center rounded-lg gap-4 md:gap-12 mt-4 md:mt-0 md:ml-12 relative bg-[#95959533]/15 w-full md:w-auto backdrop-blur-md border border-white/20`}
         >
           <a
             href="#about"
@@ -88,8 +94,8 @@ const Nav = () => {
         </div>
 
         <button
-          className="mt-4 md:mt-0 w-full md:w-auto bg-white px-8 
-        md:px-12 py-2 rounded-lg text-black relative hover:bg-gray-100 transition-colors font-inter"
+          className="hidden md:block mt-4 md:mt-0 w-full md:w-auto bg-white px-8 
+        md:px-12 py-2 rounded-lg font-medium text-black relative hover:bg-gray-100 transition-colors  text-[18px] h-[50px] font-inter"
         >
           Get Started
         </button>
@@ -212,8 +218,8 @@ const Home = () => {
 
             <ParticlesDemo />
 
-            <div className="flex flex-col items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-0 gap-12">
-              <h1 className="text-white font-pocKota text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] font-bold relative leading-tight">
+            <div className="flex flex-col items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  md:py-0 gap-6">
+              <h1 className="text-white font-pocKota text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] font-bold relative leading-tight ">
                 Crafting digital{" "}
                 <span className="text-gradient">masterpieces</span>
               </h1>
@@ -228,6 +234,79 @@ const Home = () => {
               </p>
               <div className="relative  mt-4 ">
                 <RainbowButtonDemo />
+              </div>
+
+              <div
+                className="text-center 
+               text-white text-sm sm:text-base md:text-lg lg:text-2xl  font-inter mt-4 mb-4"
+              >
+                Our team has built exceptional products.
+              </div>
+              <div className="flex space-x-16 overflow-hidden xl:max-w-[1160px] max-w-[70%] mt-6">
+                <div className="flex space-x-16 animate-loop-scroll">
+                  <Image
+                    src={icon1}
+                    alt="icon1"
+                    className=" w-auto cursor-pointer max-w-none h-[20px]"
+                  />
+                  <Image
+                    src={icon2}
+                    alt="icon2"
+                    className=" w-auto cursor-pointer max-w-none h-[20px]"
+                  />
+                  <Image
+                    src={icon3}
+                    alt="icon3"
+                    className=" w-auto cursor-pointer max-w-none h-[20px]"
+                  />
+                  <Image
+                    src={icon4}
+                    alt="icon4"
+                    className=" w-auto cursor-pointer max-w-none h-[20px]"
+                  />
+                  <Image
+                    src={icon5}
+                    alt="icon5"
+                    className=" w-auto cursor-pointer max-w-none h-[20px]"
+                  />
+                  <Image
+                    src={icon6}
+                    alt="icon6"
+                    className=" w-auto cursor-pointer max-w-none h-[20px]"
+                  />
+                </div>
+                <div className="flex space-x-16 animate-loop-scroll">
+                  <Image
+                    src={icon1}
+                    alt="icon1"
+                    className=" w-auto cursor-pointer max-w-none h-[20px]"
+                  />
+                  <Image
+                    src={icon2}
+                    alt="icon2"
+                    className=" w-auto cursor-pointer max-w-none h-[20px]"
+                  />
+                  <Image
+                    src={icon3}
+                    alt="icon3"
+                    className=" w-auto cursor-pointer max-w-none h-[20px]"
+                  />
+                  <Image
+                    src={icon4}
+                    alt="icon4"
+                    className=" w-auto cursor-pointer max-w-none h-[20px]"
+                  />
+                  <Image
+                    src={icon5}
+                    alt="icon5"
+                    className=" w-auto cursor-pointer max-w-none h-[20px]"
+                  />
+                  <Image
+                    src={icon6}
+                    alt="icon6"
+                    className=" w-auto cursor-pointer max-w-none h-[20px]"
+                  />
+                </div>
               </div>
             </div>
           </section>
