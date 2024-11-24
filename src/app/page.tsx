@@ -65,28 +65,28 @@ const Nav = () => {
         >
           <a
             href="#about"
-            className="hover:text-gray-300 transition-colors font-inter"
+            className="hover:text-gray-300 transition-colors font-inter hoverable"
             aria-label="Who we are"
           >
             Who we are
           </a>
           <a
             href="#testimonials"
-            className="hover:text-gray-300 transition-colors font-inter"
+            className="hover:text-gray-300 transition-colors font-inter hoverable"
             aria-label="People love us"
           >
             People love us
           </a>
           <a
             href="#services"
-            className="hover:text-gray-300 transition-colors font-inter"
+            className="hover:text-gray-300 transition-colors font-inter hoverable"
             aria-label="Services"
           >
             Services
           </a>
           <a
             href="#contact"
-            className="hover:text-gray-300 transition-colors font-inter"
+            className="hover:text-gray-300 transition-colors font-inter hoverable"
             aria-label="Contact"
           >
             Contact
@@ -95,7 +95,7 @@ const Nav = () => {
 
         <button
           className="hidden md:block mt-4 md:mt-0 w-full md:w-auto bg-white px-8 
-        md:px-12 py-2 rounded-lg font-medium text-black relative hover:bg-gray-100 transition-colors  text-[18px] h-[50px] font-inter"
+        md:px-12 py-2 rounded-lg font-medium text-black relative hoverable hover:bg-gray-100 transition-colors  text-[18px] h-[50px] font-inter"
         >
           Get Started
         </button>

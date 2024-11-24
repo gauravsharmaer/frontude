@@ -25,8 +25,36 @@ const Cursor: React.FC = () => {
 
     window.addEventListener("mousemove", onMouseMove);
 
+    // Add hover effect handlers
+    const onMouseHover = () => {
+      if (!bigBallRef.current) return;
+      gsap.to(bigBallRef.current, {
+        scale: 4,
+        duration: 0.3,
+      });
+    };
+
+    const onMouseHoverOut = () => {
+      if (!bigBallRef.current) return;
+      gsap.to(bigBallRef.current, {
+        scale: 1,
+        duration: 0.3,
+      });
+    };
+
+    // Add event listeners to all hoverable elements
+    const hoverables = document.querySelectorAll(".hoverable");
+    hoverables.forEach((element) => {
+      element.addEventListener("mouseenter", onMouseHover);
+      element.addEventListener("mouseleave", onMouseHoverOut);
+    });
+
     return () => {
-      window.removeEventListener("mousemove", onMouseMove);
+      // Cleanup event listeners
+      hoverables.forEach((element) => {
+        element.removeEventListener("mouseenter", onMouseHover);
+        element.removeEventListener("mouseleave", onMouseHoverOut);
+      });
     };
   }, []);
 
