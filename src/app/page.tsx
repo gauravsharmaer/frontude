@@ -6,7 +6,7 @@ import { MarqueeDemoVertical } from "@/components/ui/marqueeVertical";
 import { HomeBackground } from "../components/ui/Background";
 import Flogo from "../assets/FrontudeLogo.svg";
 import TechCardCollection from "../components/TechCardCollection";
-
+import VerticalTimeline from "@/components/VerticalWhyUs";
 import { RainbowButtonDemo } from "../components/ui/RainbowButtonui";
 import Background from "../assets/image.jpg";
 import { ParticlesDemo } from "@/components/ui/particlesui";
@@ -322,6 +322,10 @@ const Home = () => {
 
               <div className="flex flex-col ">
                 <TechCardCollection />
+              </div>
+
+              <div className="flex flex-col mt-8">
+                <VerticalTimeline />
               </div>
 
               <div className="flex flex-col mt-8">
