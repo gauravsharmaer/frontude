@@ -143,14 +143,17 @@ export default function VerticalTimeline() {
         <div className="text-white text-sm mt-2 text-center">WHY US</div>
       </div>
       <div className="pt-32 pb-10 text-center">
-        <h1 className="text-4xl font-bold text-white mb-4">
+        <h1 className="text-4xl font-bold text-white ">
           We craft apps that captivate, perform flawlessly, and
+          <br />
+          prioritize security. Built on trust and expertise, every solution
+          <br /> we deliver is designed to inspire and excel.
         </h1>
-        <p className="text-xl text-gray-400">
+        {/* <p className="text-4xl text-white">
           prioritize security. Built on trust and expertise, every solution
           <br />
           we deliver is designed to inspire and excel.
-        </p>
+        </p> */}
       </div>
 
       {sections.map((section) => (
