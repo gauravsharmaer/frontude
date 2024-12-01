@@ -324,7 +324,7 @@ const Home = () => {
                 <TechCardCollection />
               </div>
 
-              <div className="flex flex-col mt-8">
+              <div className="flex flex-col mt-8 mb-16">
                 <VerticalTimeline />
               </div>
 

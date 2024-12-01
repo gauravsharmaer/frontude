@@ -2,13 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import {
-  motion,
-
-  //   useInView,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 interface TimelineSection {
   number: number;
@@ -56,7 +50,7 @@ function TimelineSection({
   className,
 }: TimelineSection & { className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
-  //   const isInView = useInView(ref, { margin: "-40% 0px -40% 0px" });
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
@@ -88,7 +82,6 @@ function TimelineSection({
           {description}
         </p>
 
-        {/* Mockup Container */}
         <div className="relative w-full max-w-4xl mx-auto perspective-1000">
           <motion.div
             className="relative w-full rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.3)] transform-gpu"
@@ -106,7 +99,16 @@ function TimelineSection({
             />
           </motion.div>
 
-          {/* Serial Numbers with border and line */}
+          {title !== "Security" && (
+            <div className="absolute left-1/2 transform -translate-x-1/2">
+              {/* Vertical line */}
+              <div className="w-[1px] h-12 bg-white mx-auto"></div>
+              {/* Horizontal line */}
+
+              {/* Text below the lines */}
+            </div>
+          )}
+
           <div className="absolute left-0 -translate-x-24 top-1/2 -translate-y-1/2 flex items-center">
             <div className="w-10 h-10 rounded-lg border-2 border-orange-500 flex items-center justify-center">
               <span className="text-orange-500 text-xl font-medium">
@@ -132,7 +134,14 @@ function TimelineSection({
 export default function VerticalTimeline() {
   return (
     <div className="relative  min-h-screen bg-black ">
-      {/* Intro Section */}
+      <div className="absolute left-1/2 transform -translate-x-1/2">
+        {/* Vertical line */}
+        <div className="w-[1px] h-24 bg-white mx-auto"></div>
+        {/* Horizontal line */}
+        <div className="w-12 h-[1px] bg-white mx-auto"></div>
+        {/* Text below the lines */}
+        <div className="text-white text-sm mt-2 text-center">WHY US</div>
+      </div>
       <div className="pt-32 pb-10 text-center">
         <h1 className="text-4xl font-bold text-white mb-4">
           We craft apps that captivate, perform flawlessly, and
@@ -144,12 +153,17 @@ export default function VerticalTimeline() {
         </p>
       </div>
 
-      {/* Timeline Sections */}
       {sections.map((section) => (
         <TimelineSection key={section.number} {...section} className="" />
       ))}
 
-      {/* Bottom Line Cap */}
+      <div className="absolute left-1/2 transform -translate-x-1/2">
+        {/* Vertical line */}
+        <div className="w-[1px] h-24 bg-white mx-auto"></div>
+        {/* Horizontal line */}
+        <div className="w-12 h-[1px] bg-white mx-auto"></div>
+        {/* Text below the lines */}
+      </div>
     </div>
   );
 }
