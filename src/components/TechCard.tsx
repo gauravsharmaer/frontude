@@ -1,7 +1,12 @@
 import { Layers } from "lucide-react";
 import { memo } from "react";
 
-const TechCard = memo(() => {
+interface TechCardProps {
+  title: string;
+  description: string;
+}
+
+const TechCard = memo(({ title, description }: TechCardProps) => {
   return (
     <div
       className="w-full sm:w-[350px] md:w-[400px] h-[437px] relative rounded-[20px] overflow-hidden mt-3 bg-cover bg-center"
@@ -19,13 +24,11 @@ const TechCard = memo(() => {
 
         <div className="space-y-4 sm:space-y-6">
           <h2 className="text-[32px] font-bold text-white leading-[1.1] font-inter">
-            App Development
+            {title}
           </h2>
 
           <p className="text-[15px] sm:text-[17px] leading-[1] text-gray-300 max-w-[95%] font-inter">
-            We design web, mobile, and desktop apps that are visually stunning
-            and user- friendly. Our expert team ensures every app meets your
-            needs and exceeds expectations.
+            {description}
           </p>
         </div>
 

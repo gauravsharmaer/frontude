@@ -61,30 +61,34 @@ function TimelineSection({
   const scale = useTransform(
     scrollYProgress,
     [0, 0.3, 0.5, 0.7, 1],
-    [0.9, 1.3, 1.3, 1.3, 0.9]
+    [0.8, 1, 1, 1, 0.8]
   );
 
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.5, 1, 0.5]);
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.5, 0.7, 1],
+    [0.6, 1, 1, 1, 0.6]
+  );
 
   return (
     <motion.div
       ref={ref}
-      className={`relative min-h-[80%] flex items-center ${className}`}
+      className={`relative min-h-[60vh] md:min-h-[80vh] flex items-center ${className}`}
       style={{
         scale,
         opacity,
         zIndex: 1,
       }}
     >
-      <div className="max-w-6xl mx-auto px-4 py-24">
-        <h2 className="text-3xl font-bold text-white text-center mb-2 font-inter">
+      <div className="w-full max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16 lg:py-24">
+        <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-2 font-inter">
           {title}
         </h2>
-        <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto font-inter">
+        <p className="text-sm md:text-base text-gray-400 text-center mb-8 md:mb-12 max-w-2xl mx-auto font-inter">
           {description}
         </p>
 
-        <div className="relative w-full max-w-4xl mx-auto perspective-1000">
+        <div className="relative w-full max-w-[min(90vw,1000px)] mx-auto perspective-1000">
           <motion.div
             className="relative w-full rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.3)] transform-gpu"
             style={{
@@ -97,34 +101,25 @@ function TimelineSection({
               alt={`${title} mockup`}
               width={600}
               height={300}
-              className="w-[600px] h-[300px] rounded-2xl"
+              className="w-full h-auto aspect-[2/1] rounded-2xl"
               quality={100}
               priority
             />
           </motion.div>
 
-          {title !== "Security" && (
-            <div className="absolute left-1/2 transform -translate-x-1/2">
-              {/* Vertical line */}
-              <div className="w-[1px] h-12 bg-white mx-auto"></div>
-              {/* Horizontal line */}
-
-              {/* Text below the lines */}
-            </div>
-          )}
-
-          <div className="absolute left-0 -translate-x-24 top-1/2 -translate-y-1/2 flex items-center">
-            <div className="w-10 h-10 rounded-lg border-2 border-orange-500 flex items-center justify-center">
-              <span className="text-orange-500 text-xl font-medium">
+          {/* Side numbers - Hide on small screens */}
+          <div className="hidden lg:flex absolute left-0 -translate-x-12 lg:-translate-x-24 top-1/2 -translate-y-1/2 items-center">
+            <div className="w-8 lg:w-10 h-8 lg:h-10 rounded-lg border-2 border-orange-500 flex items-center justify-center">
+              <span className="text-orange-500 text-lg lg:text-xl font-medium">
                 {number}
               </span>
             </div>
-            <div className="w-8 h-[2px] bg-orange-500 ml-2"></div>
+            <div className="w-6 lg:w-8 h-[2px] bg-orange-500 ml-2"></div>
           </div>
-          <div className="absolute right-0 translate-x-24 top-1/2 -translate-y-1/2 flex items-center">
-            <div className="w-8 h-[2px] bg-orange-500 mr-2"></div>
-            <div className="w-10 h-10 rounded-lg border-2 border-orange-500 flex items-center justify-center">
-              <span className="text-orange-500 text-xl font-medium">
+          <div className="hidden lg:flex absolute right-0 translate-x-12 lg:translate-x-24 top-1/2 -translate-y-1/2 items-center">
+            <div className="w-6 lg:w-8 h-[2px] bg-orange-500 mr-2"></div>
+            <div className="w-8 lg:w-10 h-8 lg:h-10 rounded-lg border-2 border-orange-500 flex items-center justify-center">
+              <span className="text-orange-500 text-lg lg:text-xl font-medium">
                 {number}
               </span>
             </div>
@@ -137,39 +132,31 @@ function TimelineSection({
 
 export default function VerticalTimeline() {
   return (
-    <div className="relative  min-h-screen bg-black ">
-      <div className="absolute left-1/2 transform -translate-x-1/2">
-        {/* Vertical line */}
-        <div className="w-[1px] h-24 bg-white mx-auto"></div>
-        {/* Horizontal line */}
-        <div className="w-12 h-[1px] bg-white mx-auto"></div>
-        {/* Text below the lines */}
-        <div className="text-white text-sm mt-2 text-center">WHY US</div>
-      </div>
-      <div className="pt-32 pb-10 text-center">
-        <h1 className="text-4xl font-bold text-white font-pocKota">
-          We craft apps that captivate, perform flawlessly, and
-          <br />
-          prioritize security. Built on trust and expertise, every solution
-          <br /> we deliver is designed to inspire and excel.
-        </h1>
-        {/* <p className="text-4xl text-white">
-          prioritize security. Built on trust and expertise, every solution
-          <br />
-          we deliver is designed to inspire and excel.
-        </p> */}
-      </div>
+    <div className="relative min-h-screen bg-black">
+      <div className="mx-auto max-w-[100vw]">
+        <div className="absolute left-1/2 transform -translate-x-1/2">
+          <div className="w-[1px] h-16 md:h-24 bg-white mx-auto"></div>
+          <div className="w-8 md:w-12 h-[1px] bg-white mx-auto"></div>
+          <div className="text-white text-xs md:text-sm mt-2 text-center">
+            WHY US
+          </div>
+        </div>
+        <div className="pt-24 md:pt-32 pb-6 md:pb-10 text-center px-6 lg:px-8">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white font-pocKota leading-relaxed max-w-[90rem] mx-auto">
+            We craft apps that captivate, perform flawlessly, and prioritize
+            security. Built on trust and expertise, every solution we deliver is
+            designed to inspire and excel.
+          </h1>
+        </div>
 
-      {sections.map((section) => (
-        <TimelineSection key={section.number} {...section} className="" />
-      ))}
+        {sections.map((section) => (
+          <TimelineSection key={section.number} {...section} />
+        ))}
 
-      <div className="absolute left-1/2 transform -translate-x-1/2">
-        {/* Vertical line */}
-        <div className="w-[1px] h-24 bg-white mx-auto"></div>
-        {/* Horizontal line */}
-        <div className="w-12 h-[1px] bg-white mx-auto"></div>
-        {/* Text below the lines */}
+        <div className="absolute left-1/2 transform -translate-x-1/2">
+          <div className="w-[1px] h-16 md:h-24 bg-white mx-auto"></div>
+          <div className="w-8 md:w-12 h-[1px] bg-white mx-auto"></div>
+        </div>
       </div>
     </div>
   );

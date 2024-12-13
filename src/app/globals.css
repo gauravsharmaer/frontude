@@ -31,6 +31,13 @@
   .text-balance {
     text-wrap: balance;
   }
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @layer base {
@@ -331,13 +338,38 @@ button {
   cursor: none !important;
 }
 
-.perspective-1000 {
+/* .perspective-1000 {
   perspective: 1000px;
-}
-
+} */
 
 /* Add stacking context */
 body {
   @apply min-h-screen bg-black m-0 font-mono overflow-x-hidden;
   cursor: none !important;
+}
+@media (max-width: 768px) {
+  .perspective-1000 {
+    perspective: 600px;
+  }
+}
+
+/* Optional: If you want custom scrollbar on desktop */
+@media (min-width: 768px) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: #666 #333;
+  }
+
+  html::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  html::-webkit-scrollbar-track {
+    background: #333;
+  }
+
+  html::-webkit-scrollbar-thumb {
+    background-color: #666;
+    border-radius: 4px;
+  }
 }
