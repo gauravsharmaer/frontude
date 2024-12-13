@@ -1,3 +1,4 @@
+//timeline
 "use client";
 
 import React, { useRef } from "react";
@@ -78,8 +79,17 @@ export default function Component() {
               </linearGradient>
             </defs>
 
-            <motion.path
+            {/* <motion.path
               d="M 100,100 H 400 C 500,100 700,100 800,200 C 900,300 900,400 800,500 C 700,600 500,600 300,600"
+              className="stroke-[#d6180a] fill-none stroke-[1px] md:stroke-[2px]"
+              strokeLinecap="round"
+              filter="url(#glow)"
+              style={{ pathLength: scrollYProgress }}
+            /> */}
+
+            <motion.path
+              // Updated path to create a stepped graph shape
+              d="M 100,100 H 350 V 150 H 650 V 200 H 800 V 500 H 550 V 600 H 300"
               className="stroke-[#d6180a] fill-none stroke-[1px] md:stroke-[2px]"
               strokeLinecap="round"
               filter="url(#glow)"
