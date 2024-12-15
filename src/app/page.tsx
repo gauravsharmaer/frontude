@@ -13,12 +13,17 @@ import Background from "../assets/image.jpg";
 import { ParticlesDemo } from "@/components/ui/particlesui";
 import { TextRevealDemo } from "../components/TextRevealDemo";
 import TimelineAnimation from "@/components/ui/TimelineAnimation";
+import Footer from "../components/Footer";
 import icon1 from "../assets/icon1.svg";
+import Genie from "../assets/Genie.svg";
+import InpharmD_logo from "../assets/InpharmD_logo.svg";
+import bartLogo from "../assets/bartLogo.svg";
 import icon2 from "../assets/icon2.svg";
 import icon3 from "../assets/icon3.svg";
 import icon4 from "../assets/icon4.svg";
 import icon5 from "../assets/icon5.svg";
 import icon6 from "../assets/icon6.svg";
+import twinbo from "../assets/twinbo.svg";
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -309,22 +314,22 @@ const Home = () => {
               >
                 <div className="flex space-x-8 sm:space-x-12 md:space-x-16 animate-loop-scroll">
                   <Image
-                    src={icon1}
+                    src={twinbo}
                     alt="icon1"
                     className="w-auto cursor-pointer max-w-none 
-                      h-[16px] sm:h-[18px] md:h-[20px]"
+                      h-[16px] sm:h-[18px] md:h-[24px]"
                   />
                   <Image
-                    src={icon2}
+                    src={Genie}
                     alt="icon2"
                     className="w-auto cursor-pointer max-w-none 
-                      h-[16px] sm:h-[18px] md:h-[20px]"
+                      h-[16px] sm:h-[18px] md:h-[24px]"
                   />
                   <Image
-                    src={icon3}
+                    src={InpharmD_logo}
                     alt="icon3"
                     className="w-auto cursor-pointer max-w-none 
-                      h-[16px] sm:h-[18px] md:h-[20px]"
+                      h-[16px] sm:h-[18px] md:h-[24px]"
                   />
                   <Image
                     src={icon4}
@@ -333,10 +338,10 @@ const Home = () => {
                       h-[16px] sm:h-[18px] md:h-[20px]"
                   />
                   <Image
-                    src={icon5}
+                    src={bartLogo}
                     alt="icon5"
                     className="w-auto cursor-pointer max-w-none 
-                      h-[16px] sm:h-[18px] md:h-[20px]"
+                      h-[16px] sm:h-[18px] md:h-[24px]"
                   />
                   <Image
                     src={icon6}
@@ -347,28 +352,28 @@ const Home = () => {
                 </div>
                 <div className="flex space-x-8 sm:space-x-12 md:space-x-16 animate-loop-scroll">
                   <Image
-                    src={icon1}
+                    src={twinbo}
                     alt="icon1"
                     className="w-auto cursor-pointer max-w-none 
-                      h-[16px] sm:h-[18px] md:h-[20px]"
+                      h-[16px] sm:h-[18px] md:h-[24px]"
                   />
                   <Image
-                    src={icon2}
+                    src={Genie}
                     alt="icon2"
                     className="w-auto cursor-pointer max-w-none 
-                      h-[16px] sm:h-[18px] md:h-[20px]"
+                      h-[16px] sm:h-[18px] md:h-[24px]"
                   />
                   <Image
-                    src={icon3}
+                    src={InpharmD_logo}
                     alt="icon3"
                     className="w-auto cursor-pointer max-w-none 
-                      h-[16px] sm:h-[18px] md:h-[20px]"
+                      h-[16px] sm:h-[18px] md:h-[24px]"
                   />
                   <Image
-                    src={icon4}
+                    src={bartLogo}
                     alt="icon4"
                     className="w-auto cursor-pointer max-w-none 
-                      h-[16px] sm:h-[18px] md:h-[20px]"
+                      h-[16px] sm:h-[18px] md:h-[24px]"
                   />
                   <Image
                     src={icon5}
@@ -435,6 +440,13 @@ const Home = () => {
                 w-full"
               >
                 <MarqueeDemoVertical />
+              </div>
+              <div
+                className="flex flex-col 
+                mt-6 sm:mt-8 md:mt-12 lg:mt-16
+                w-full"
+              >
+                <Footer />
               </div>
             </div>
           </section>
