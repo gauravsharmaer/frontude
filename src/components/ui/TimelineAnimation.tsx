@@ -21,6 +21,114 @@ export default function Component() {
   const testingOpacity = useTransform(scrollYProgress, [0.6, 0.75], [0, 1]);
   const maintenanceOpacity = useTransform(scrollYProgress, [0.75, 0.9], [0, 1]);
 
+  const planningTextColor = useTransform(
+    scrollYProgress,
+    [0, 0.15, 0.15, 0.3],
+    ["#d6180a", "#d6180a", "#8A8A8A", "#8A8A8A"]
+  );
+
+  const analysisTextColor = useTransform(
+    scrollYProgress,
+    [0.15, 0.3, 0.3, 0.45],
+    ["#d6180a", "#d6180a", "#8A8A8A", "#8A8A8A"]
+  );
+
+  const designTextColor = useTransform(
+    scrollYProgress,
+    [0.3, 0.45, 0.45, 0.6],
+    ["#d6180a", "#d6180a", "#8A8A8A", "#8A8A8A"]
+  );
+
+  const implementationTextColor = useTransform(
+    scrollYProgress,
+    [0.45, 0.6, 0.6, 0.75],
+    ["#d6180a", "#d6180a", "#8A8A8A", "#8A8A8A"]
+  );
+
+  const testingTextColor = useTransform(
+    scrollYProgress,
+    [0.6, 0.75, 0.75, 0.9],
+    ["#d6180a", "#d6180a", "#8A8A8A", "#8A8A8A"]
+  );
+
+  const maintenanceTextColor = useTransform(
+    scrollYProgress,
+    [0.75, 0.9, 0.9, 1],
+    ["#d6180a", "#d6180a", "#d6180a", "#d6180a"]
+  );
+
+  const planningImageFilter = useTransform(
+    scrollYProgress,
+    [0, 0.15, 0.15, 0.3],
+    ["url(#redTint)", "url(#redTint)", "none", "none"]
+  );
+
+  const analysisImageFilter = useTransform(
+    scrollYProgress,
+    [0.15, 0.3, 0.3, 0.45],
+    ["url(#redTint)", "url(#redTint)", "none", "none"]
+  );
+
+  const designImageFilter = useTransform(
+    scrollYProgress,
+    [0.3, 0.45, 0.45, 0.6],
+    ["url(#redTint)", "url(#redTint)", "none", "none"]
+  );
+
+  const implementationImageFilter = useTransform(
+    scrollYProgress,
+    [0.45, 0.6, 0.6, 0.75],
+    ["url(#redTint)", "url(#redTint)", "none", "none"]
+  );
+
+  const testingImageFilter = useTransform(
+    scrollYProgress,
+    [0.6, 0.75, 0.75, 0.9],
+    ["url(#redTint)", "url(#redTint)", "none", "none"]
+  );
+
+  const maintenanceImageFilter = useTransform(
+    scrollYProgress,
+    [0.75, 0.9, 0.9, 1],
+    ["url(#redTint)", "url(#redTint)", "url(#redTint)", "url(#redTint)"]
+  );
+
+  const planningDescriptionOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.15, 0.15, 0.3],
+    [1, 1, 1, 1]
+  );
+
+  const analysisDescriptionOpacity = useTransform(
+    scrollYProgress,
+    [0.15, 0.3, 0.3, 0.45],
+    [1, 1, 0, 0]
+  );
+
+  const designDescriptionOpacity = useTransform(
+    scrollYProgress,
+    [0.3, 0.45, 0.45, 0.6],
+    [1, 1, 0, 0]
+  );
+
+  const implementationDescriptionOpacity = useTransform(
+    scrollYProgress,
+    [0.45, 0.6, 0.6, 0.75],
+    [1, 1, 0, 0]
+  );
+
+  const testingDescriptionOpacity = useTransform(
+    scrollYProgress,
+    [0.6, 0.75, 0.75, 0.9],
+    [1, 1, 0, 0]
+  );
+
+  const maintenanceDescriptionOpacity = useTransform(
+    scrollYProgress,
+    [0.75, 0.9, 0.9, 1],
+    [1, 1, 1, 1]
+  );
+
   return (
     <>
       <div
@@ -76,6 +184,16 @@ export default function Component() {
                 <stop offset="0%" stopColor="#d6180a" stopOpacity="1" />
                 <stop offset="100%" stopColor="#d6180a" stopOpacity="0" />
               </linearGradient>
+
+              <filter id="redTint">
+                <feColorMatrix
+                  type="matrix"
+                  values="1 0 0 0 0.839
+                          0 0 0 0 0.094
+                          0 0 0 0 0.039
+                          0 0 0 1 0"
+                />
+              </filter>
             </defs>
 
             <motion.path
@@ -97,34 +215,40 @@ export default function Component() {
                 fill="url(#verticalLineGradientReverse)"
                 transform="rotate(-90.13deg)"
               />
-              <image
+              <motion.image
                 href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/discovery-lUcuYK3WA8j2J6VHM5COVjlUHe535G.svg"
                 x="50"
                 y="67"
                 width="16"
                 height="16"
+                style={{ filter: planningImageFilter }}
               />
-              <text
+              <motion.text
                 x="70"
                 y="80"
-                className="text-[12px] md:text-[14px] fill-[#8A8A8A] font-inter"
+                className="text-[12px] md:text-[14px] font-inter"
+                style={{ fill: planningTextColor }}
               >
                 Discovery
-              </text>
-              <text
+              </motion.text>
+              <motion.text
                 x="70"
                 y="100"
-                className="text-[10px] md:text-xs fill-[#8A8A8A] font-inter"
+                className="text-[10px] md:text-xs font-inter"
+                fill="#8A8A8A"
+                style={{ opacity: planningDescriptionOpacity }}
               >
                 Understanding your business, goals
-              </text>
-              <text
+              </motion.text>
+              <motion.text
                 x="70"
                 y="120"
-                className="text-[10px] md:text-xs fill-[#8A8A8A] font-inter"
+                className="text-[10px] md:text-xs font-inter"
+                fill="#8A8A8A"
+                style={{ opacity: planningDescriptionOpacity }}
               >
                 and market position
-              </text>
+              </motion.text>
               {/* Lower vertical line with normal gradient */}
               <rect
                 x="98.5"
@@ -145,34 +269,40 @@ export default function Component() {
 
             {/* Analysis */}
             <motion.g style={{ opacity: analysisOpacity }}>
-              <image
+              <motion.image
                 href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/discovery-lUcuYK3WA8j2J6VHM5COVjlUHe535G.svg"
                 x="400"
                 y="67"
                 width="16"
                 height="16"
+                style={{ filter: analysisImageFilter }}
               />
-              <text
+              <motion.text
                 x="420"
                 y="80"
-                className="text-[14px] fill-[#8A8A8A] font-inter"
+                className="text-[14px] font-inter"
+                style={{ fill: analysisTextColor }}
               >
                 Strategy Development
-              </text>
-              <text
+              </motion.text>
+              <motion.text
                 x="420"
                 y="100"
-                className="text-[10px] md:text-xs fill-[#8A8A8A] font-inter"
+                className="text-[10px] md:text-xs font-inter"
+                fill="#8A8A8A"
+                style={{ opacity: analysisDescriptionOpacity }}
               >
                 Creating a roadmap tailored
-              </text>
-              <text
+              </motion.text>
+              <motion.text
                 x="420"
                 y="120"
-                className="text-[10px] md:text-xs fill-[#8A8A8A] font-inter"
+                className="text-[10px] md:text-xs font-inter"
+                fill="#8A8A8A"
+                style={{ opacity: analysisDescriptionOpacity }}
               >
                 to your objectives
-              </text>
+              </motion.text>
               <rect
                 x="448.5"
                 y="100"
@@ -192,34 +322,40 @@ export default function Component() {
 
             {/* Design */}
             <motion.g style={{ opacity: designOpacity }}>
-              <image
+              <motion.image
                 href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/discovery-lUcuYK3WA8j2J6VHM5COVjlUHe535G.svg"
                 x="700"
                 y="92"
                 width="16"
                 height="16"
+                style={{ filter: designImageFilter }}
               />
-              <text
+              <motion.text
                 x="720"
                 y="105"
-                className="text-[14px] fill-[#8A8A8A] font-inter"
+                className="text-[14px] font-inter"
+                style={{ fill: designTextColor }}
               >
                 Design & Innovation
-              </text>
-              <text
+              </motion.text>
+              <motion.text
                 x="720"
                 y="125"
-                className="text-[10px] md:text-xs fill-[#8A8A8A] font-inter"
+                className="text-[10px] md:text-xs font-inter"
+                fill="#8A8A8A"
+                style={{ opacity: designDescriptionOpacity }}
               >
                 Crafting solutions that blend
-              </text>
-              <text
+              </motion.text>
+              <motion.text
                 x="720"
                 y="145"
-                className="text-[10px] md:text-xs fill-[#8A8A8A] font-inter"
+                className="text-[10px] md:text-xs font-inter"
+                fill="#8A8A8A"
+                style={{ opacity: designDescriptionOpacity }}
               >
                 form and function
-              </text>
+              </motion.text>
               <rect
                 x="748.5"
                 y="162"
@@ -240,34 +376,40 @@ export default function Component() {
 
             {/* Implementation */}
             <motion.g style={{ opacity: implementationOpacity }}>
-              <image
+              <motion.image
                 href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/discovery-lUcuYK3WA8j2J6VHM5COVjlUHe535G.svg"
                 x="882"
                 y="287"
                 width="16"
                 height="16"
+                style={{ filter: implementationImageFilter }}
               />
-              <text
+              <motion.text
                 x="900"
                 y="300"
-                className="text-[14px] fill-[#8A8A8A] font-inter"
+                className="text-[14px] font-inter"
+                style={{ fill: implementationTextColor }}
               >
                 Development
-              </text>
-              <text
+              </motion.text>
+              <motion.text
                 x="900"
                 y="320"
-                className="text-[10px] md:text-xs fill-[#8A8A8A] font-inter"
+                className="text-[10px] md:text-xs font-inter"
+                fill="#8A8A8A"
+                style={{ opacity: implementationDescriptionOpacity }}
               >
                 Building with cutting-edge technology
-              </text>
-              <text
+              </motion.text>
+              <motion.text
                 x="900"
                 y="340"
-                className="text-[10px] md:text-xs fill-[#8A8A8A] font-inter"
+                className="text-[10px] md:text-xs font-inter"
+                fill="#8A8A8A"
+                style={{ opacity: implementationDescriptionOpacity }}
               >
                 and best practices
-              </text>
+              </motion.text>
               <rect
                 x="868"
                 y="300"
@@ -287,27 +429,31 @@ export default function Component() {
 
             {/* Testing */}
             <motion.g style={{ opacity: testingOpacity }}>
-              <image
+              <motion.image
                 href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/discovery-lUcuYK3WA8j2J6VHM5COVjlUHe535G.svg"
                 x="750"
                 y="467"
                 width="16"
                 height="16"
+                style={{ filter: testingImageFilter }}
               />
-              <text
+              <motion.text
                 x="770"
                 y="480"
-                className="text-[14px] fill-[#8A8A8A] font-inter"
+                className="text-[14px] font-inter"
+                style={{ fill: testingTextColor }}
               >
                 Launch & Optimization
-              </text>
-              <text
+              </motion.text>
+              <motion.text
                 x="770"
                 y="500"
-                className="text-[10px] md:text-xs fill-[#8A8A8A] font-inter"
+                className="text-[10px] md:text-xs font-inter"
+                fill="#8A8A8A"
+                style={{ opacity: testingDescriptionOpacity }}
               >
                 Ensuring performance meets expectations
-              </text>
+              </motion.text>
 
               <rect
                 x="799"
@@ -328,20 +474,15 @@ export default function Component() {
 
             {/* Maintenance */}
             <motion.g style={{ opacity: maintenanceOpacity }}>
-              <image
+              <motion.image
                 href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/discovery-lUcuYK3WA8j2J6VHM5COVjlUHe535G.svg"
                 x="250"
                 y="527"
                 width="16"
                 height="16"
+                style={{ filter: maintenanceImageFilter }}
               />
-              <text
-                x="270"
-                y="540"
-                className="text-[12px] md:text-[14px] fill-[#8A8A8A] font-inter"
-              >
-                Ongoing Partnership
-              </text>
+
               <rect
                 x="298"
                 y="600"
@@ -350,6 +491,7 @@ export default function Component() {
                 transform="rotate(-90.13deg)"
                 fill="url(#verticalLineGradient)"
               />
+
               <circle
                 cx="300"
                 cy="600"
@@ -357,20 +499,33 @@ export default function Component() {
                 className="fill-[#d6180a]"
                 filter="url(#glow)"
               />
-              <text
+
+              <motion.text
+                x="270"
+                y="540"
+                className="text-[12px] md:text-[14px] font-inter"
+                style={{ fill: maintenanceTextColor }}
+              >
+                Ongoing Partnership
+              </motion.text>
+              <motion.text
                 x="270"
                 y="560"
-                className="text-[10px] md:text-xs fill-[#8A8A8A] font-inter"
+                className="text-[10px] md:text-xs font-inter"
+                fill="#8A8A8A"
+                style={{ opacity: maintenanceDescriptionOpacity }}
               >
                 Supporting your continued
-              </text>
-              <text
+              </motion.text>
+              <motion.text
                 x="270"
                 y="580"
-                className="text-[10px] md:text-xs fill-[#8A8A8A] font-inter"
+                className="text-[10px] md:text-xs font-inter"
+                fill="#8A8A8A"
+                style={{ opacity: maintenanceDescriptionOpacity }}
               >
                 evolution and growth
-              </text>
+              </motion.text>
             </motion.g>
           </svg>
         </div>

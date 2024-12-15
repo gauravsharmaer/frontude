@@ -7,7 +7,7 @@ export function FooterPattern() {
 
   return (
     <div
-      className="w-full h-[200px] relative overflow-hidden cursor-pointer"
+      className="w-full h-[100px] md:h-[150px] lg:h-[200px] relative overflow-hidden cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -22,7 +22,7 @@ export function FooterPattern() {
             isHovered ? "stroke-[#d6180a]" : "stroke-zinc-800"
           }`}
           fill="none"
-          strokeWidth="1"
+          strokeWidth="1.5"
         />
         <path
           d="M0 120 Q360 70 720 120 Q1080 170 1440 120"
@@ -30,7 +30,7 @@ export function FooterPattern() {
             isHovered ? "stroke-[#d6180a]" : "stroke-zinc-800"
           }`}
           fill="none"
-          strokeWidth="1"
+          strokeWidth="1.5"
         />
         <path
           d="M0 80 Q360 130 720 80 Q1080 30 1440 80"
@@ -38,13 +38,11 @@ export function FooterPattern() {
             isHovered ? "stroke-[#d6180a]" : "stroke-zinc-800"
           }`}
           fill="none"
-          strokeWidth="1"
+          strokeWidth="1.5"
         />
       </svg>
       <div
-        className={`absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 transition-opacity duration-1000 ${
-          isHovered ? "" : ""
-        }`}
+        className={`absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 transition-opacity duration-1000`}
       ></div>
     </div>
   );

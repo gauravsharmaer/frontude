@@ -393,7 +393,7 @@ const Home = () => {
           <section
             className="w-full 
             px-3 sm:px-4 md:px-6 lg:px-8 xl:px-10
-            py-8 sm:py-12 md:py-16 lg:py-20
+            py-8 sm:py-12 md:py-0 lg:py-0
             max-w-[2000px] mx-auto"
           >
             <div
@@ -448,9 +448,9 @@ const Home = () => {
               </div>
             </div>
           </section>
-          <section className="w-full py-16 ">
+          {/* <section className="w-full py-16 ">
             <div className="container mx-auto px-4 flex flex-col gap-16 md:gap-32"></div>
-          </section>
+          </section> */}
         </main>
       </HomeBackground>
     </CursorWrapper>

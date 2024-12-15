@@ -1,10 +1,9 @@
 import React from "react";
-import { FooterPattern } from "./FooterPattern";
 import FooterText from "./FooterText";
 
 const Footer = () => {
   return (
-    <div className="border-t border-zinc-800 relative">
+    <div className="border-t border-zinc-800 relative ">
       <div
         className="absolute inset-x-0 -top-[2px] h-[2px]"
         style={{
@@ -19,8 +18,10 @@ const Footer = () => {
           `,
         }}
       />
-      <FooterText />
-      <FooterPattern />
+      <div className="container mx-auto">
+        <FooterText />
+        {/* <FooterPattern /> */}
+      </div>
     </div>
   );
 };
