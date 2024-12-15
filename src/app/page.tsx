@@ -27,7 +27,7 @@ const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleEmailClick = () => {
-    const email = "your-email@frontude.com"; // Replace with your email
+    const email = "your-email@frontude.com";
     const subject = "Get Started with Frontude";
     const body = "I would like to learn more about your services.";
 
@@ -115,6 +115,17 @@ const Nav = () => {
           >
             Contact
           </a>
+          <button
+            className="md:hidden w-full
+            bg-white hover:bg-gray-100 
+            px-4 h-[38px] rounded-lg 
+            font-medium text-black
+            transition-colors duration-200
+            text-[14px]"
+            onClick={handleEmailClick}
+          >
+            Get Started
+          </button>
         </div>
 
         <button
@@ -126,18 +137,6 @@ const Nav = () => {
           transition-colors duration-200
           text-[14px] sm:text-[15px] md:text-[16px]
           whitespace-nowrap"
-          onClick={handleEmailClick}
-        >
-          Get Started
-        </button>
-
-        <button
-          className="md:hidden w-full mt-3
-          bg-white hover:bg-gray-100 
-          px-4 h-[38px] rounded-lg 
-          font-medium text-black
-          transition-colors duration-200
-          text-[14px]"
           onClick={handleEmailClick}
         >
           Get Started
