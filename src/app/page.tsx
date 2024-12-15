@@ -14,14 +14,12 @@ import { ParticlesDemo } from "@/components/ui/particlesui";
 import { TextRevealDemo } from "../components/TextRevealDemo";
 import TimelineAnimation from "@/components/ui/TimelineAnimation";
 import Footer from "../components/Footer";
-import icon1 from "../assets/icon1.svg";
+
 import Genie from "../assets/Genie.svg";
 import InpharmD_logo from "../assets/InpharmD_logo.svg";
 import bartLogo from "../assets/bartLogo.svg";
-import icon2 from "../assets/icon2.svg";
-import icon3 from "../assets/icon3.svg";
-import icon4 from "../assets/icon4.svg";
-import icon5 from "../assets/icon5.svg";
+import secretdesires from "../assets/secretdesires.svg";
+
 import icon6 from "../assets/icon6.svg";
 import twinbo from "../assets/twinbo.svg";
 
@@ -332,10 +330,10 @@ const Home = () => {
                       h-[16px] sm:h-[18px] md:h-[24px]"
                   />
                   <Image
-                    src={icon4}
+                    src={secretdesires}
                     alt="icon4"
                     className="w-auto cursor-pointer max-w-none 
-                      h-[16px] sm:h-[18px] md:h-[20px]"
+                      h-[16px] sm:h-[18px] md:h-[24px]"
                   />
                   <Image
                     src={bartLogo}
@@ -376,10 +374,10 @@ const Home = () => {
                       h-[16px] sm:h-[18px] md:h-[24px]"
                   />
                   <Image
-                    src={icon5}
+                    src={secretdesires}
                     alt="icon5"
                     className="w-auto cursor-pointer max-w-none 
-                      h-[16px] sm:h-[18px] md:h-[20px]"
+                      h-[16px] sm:h-[18px] md:h-[24px]"
                   />
                   <Image
                     src={icon6}
