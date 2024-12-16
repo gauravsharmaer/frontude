@@ -1,6 +1,6 @@
 //page.tsx
 "use client";
-import { CursorWrapper } from "../components/CursorWrapper";
+// import { CursorWrapper } from "../components/CursorWrapper";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { MarqueeDemoVertical } from "@/components/ui/marqueeVertical";
