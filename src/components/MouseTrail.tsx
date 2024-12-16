@@ -6,27 +6,16 @@ const Cursor: React.FC = () => {
   const smallBallRef = useRef<HTMLDivElement>(null);
   const rafIdRef = useRef<number>();
   const lastMousePosition = useRef({ x: 0, y: 0 });
-  // Add this at the start of your MouseTrail component
-  const isSupportedBrowser =
-    typeof window !== "undefined" &&
-    "requestAnimationFrame" in window &&
-    !("ontouchstart" in window);
 
-  if (!isSupportedBrowser) {
-    return null;
-  }
-
-  // Throttled mouse move handler
+  // Move hooks before the browser check
   const onMouseMove = useCallback((e: MouseEvent) => {
     lastMousePosition.current = { x: e.clientX, y: e.clientY };
   }, []);
 
-  // Animate function using requestAnimationFrame
   const animate = useCallback(() => {
     if (bigBallRef.current && smallBallRef.current) {
       const { x, y } = lastMousePosition.current;
 
-      // Simple linear interpolation for smoother movement
       const currentBigX =
         parseFloat(bigBallRef.current.style.transform.split("(")[1]) || 0;
       const currentBigY =
@@ -48,6 +37,16 @@ const Cursor: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    // Check for browser support inside useEffect
+    const isSupportedBrowser =
+      typeof window !== "undefined" &&
+      "requestAnimationFrame" in window &&
+      !("ontouchstart" in window);
+
+    if (!isSupportedBrowser) {
+      return;
+    }
+
     // Initialize animation
     rafIdRef.current = requestAnimationFrame(animate);
 
@@ -88,6 +87,16 @@ const Cursor: React.FC = () => {
       window.removeEventListener("mousemove", onMouseMove);
     };
   }, [animate, onMouseMove]);
+
+  // Check browser support before rendering
+  const isSupportedBrowser =
+    typeof window !== "undefined" &&
+    "requestAnimationFrame" in window &&
+    !("ontouchstart" in window);
+
+  if (!isSupportedBrowser) {
+    return null;
+  }
 
   return (
     <div id="cursor-container">
