@@ -59,7 +59,7 @@ function hexToRgb(hex: string): number[] {
 
 const Particles: React.FC<ParticlesProps> = ({
   className = "",
-  quantity = 100,
+  quantity = 50,
   staticity = 50,
   ease = 50,
   size = 0.4,
@@ -91,14 +91,14 @@ const Particles: React.FC<ParticlesProps> = ({
 
     let adjustedCount = quantity;
     if (isMobile) {
-      adjustedCount = Math.floor(quantity * 0.3); // 30% for mobile
+      adjustedCount = Math.floor(quantity * 0.2); // 20% for mobile (more aggressive reduction)
     } else if (isLowPerfDevice) {
-      adjustedCount = Math.floor(quantity * 0.5); // 50% for low-perf devices
+      adjustedCount = Math.floor(quantity * 0.3); // 30% for low-perf devices
     } else if (width < 1024) {
-      adjustedCount = Math.floor(quantity * 0.7); // 70% for smaller screens
+      adjustedCount = Math.floor(quantity * 0.5); // 50% for smaller screens
     }
 
-    setParticleCount(Math.min(adjustedCount, 150)); // Cap at 150 particles
+    setParticleCount(Math.min(adjustedCount, 100)); // Reduced max cap to 100
   }, [quantity]);
 
   useEffect(() => {
@@ -240,7 +240,7 @@ const Particles: React.FC<ParticlesProps> = ({
   const animate = (timestamp: number) => {
     if (!context.current) return;
 
-    // Throttle frame rate
+    // More aggressive frame limiting
     const deltaTime = timestamp - lastFrameTimeRef.current;
     if (deltaTime < FRAME_TIME) {
       frameRef.current = requestAnimationFrame(animate);
@@ -250,38 +250,36 @@ const Particles: React.FC<ParticlesProps> = ({
 
     clearContext();
 
+    // Batch rendering for better performance
+    context.current.save();
     circles.current.forEach((circle: Circle, i: number) => {
-      // Basic performance optimization - update fewer particles on low-end devices
-      if (circles.current.length > 50 && i % 2 !== 0) {
+      // Update fewer particles on each frame
+      if (i % 3 !== 0) {
+        // Only update every third particle
         drawCircle(circle, true);
         return;
       }
 
-      // Optimized movement calculations
-      const dx = (circle.dx + vx) * 0.5;
-      const dy = (circle.dy + vy) * 0.5;
+      // Simplified movement calculations
+      circle.x += (circle.dx + vx) * 0.3; // Reduced movement speed
+      circle.y += (circle.dy + vy) * 0.3;
+      circle.alpha = Math.min(circle.alpha + 0.01, circle.targetAlpha); // Slower fade in
 
-      circle.x += dx;
-      circle.y += dy;
-
-      // Simplified alpha transition
-      circle.alpha = Math.min(circle.alpha + 0.02, circle.targetAlpha);
-
-      // Optimized magnetic effect
+      // Simplified magnetic effect
       if (Math.abs(mouse.current.x) + Math.abs(mouse.current.y) > 1) {
         circle.translateX +=
           (mouse.current.x / (staticity / circle.magnetism) -
             circle.translateX) /
-          ease;
+          (ease * 2);
         circle.translateY +=
           (mouse.current.y / (staticity / circle.magnetism) -
             circle.translateY) /
-          ease;
+          (ease * 2);
       }
 
       drawCircle(circle, true);
 
-      // Reset particles that go out of bounds
+      // Reset particles
       if (
         circle.x < -circle.size ||
         circle.x > canvasSize.current.w + circle.size ||
@@ -291,6 +289,7 @@ const Particles: React.FC<ParticlesProps> = ({
         circles.current[i] = circleParams();
       }
     });
+    context.current.restore();
 
     frameRef.current = requestAnimationFrame(animate);
   };

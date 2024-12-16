@@ -8,18 +8,18 @@ import Particles from "@/components/ui/particles";
 export function ParticlesDemo() {
   const { theme } = useTheme();
   const [color, setColor] = useState("#ffffff");
-  const [quantity, setQuantity] = useState(200);
+  const [quantity, setQuantity] = useState(120);
 
   useEffect(() => {
     // Adjust initial particle quantity based on screen size
     const adjustParticleCount = () => {
       const width = window.innerWidth;
       if (width < 768) {
-        setQuantity(50); // Mobile devices
+        setQuantity(30); // Reduced from 50 for mobile
       } else if (width < 1024) {
-        setQuantity(100); // Tablets
+        setQuantity(50); // Reduced from 100 for tablets
       } else {
-        setQuantity(200); // Desktop
+        setQuantity(100); // Reduced from 200 for desktop
       }
     };
 
@@ -38,10 +38,11 @@ export function ParticlesDemo() {
       <Particles
         className="absolute inset-0"
         quantity={quantity}
-        ease={100}
+        ease={150}
         color={color}
         refresh={false} // Set to false to prevent unnecessary refreshes
-        staticity={75} // Increased staticity for smoother movement
+        staticity={100} // Increased staticity for smoother movement
+        size={0.3} // Smaller particles
       />
     </div>
   );
