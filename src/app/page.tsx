@@ -23,6 +23,13 @@ import secretdesires from "../assets/secretdesires.svg";
 import icon6 from "../assets/icon6.svg";
 import twinbo from "../assets/twinbo.svg";
 
+import dynamic from "next/dynamic";
+
+const DynamicCursorWrapper = dynamic(
+  () => import("../components/CursorWrapper").then((mod) => mod.CursorWrapper),
+  { ssr: false }
+);
+
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -149,15 +156,12 @@ const Nav = () => {
 const Home = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [windowSize, setWindowSize] = useState({
-    width: 0,
-    height: 0,
+    width: typeof window !== "undefined" ? window.innerWidth : 0,
+    height: typeof window !== "undefined" ? window.innerHeight : 0,
   });
 
   useEffect(() => {
-    setWindowSize({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    });
+    if (typeof window === "undefined") return;
 
     const handleResize = () => {
       setWindowSize({
@@ -165,6 +169,8 @@ const Home = () => {
         height: window.innerHeight,
       });
     };
+
+    handleResize();
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -181,7 +187,7 @@ const Home = () => {
   };
 
   return (
-    <CursorWrapper>
+    <DynamicCursorWrapper>
       <Nav />
       <HomeBackground>
         <main className="flex flex-col w-full relative gap-12 sm:gap-16 md:gap-20">
@@ -223,7 +229,7 @@ const Home = () => {
               /8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
             />
 
-            {windowSize.width > 600 ? (
+            {typeof window !== "undefined" && windowSize.width > 600 ? (
               <div
                 className="absolute inset-0 bg-black/70 -z-20 transition-[mask-position] duration-300 ease-in-out"
                 style={{
@@ -452,7 +458,7 @@ const Home = () => {
           </section> */}
         </main>
       </HomeBackground>
-    </CursorWrapper>
+    </DynamicCursorWrapper>
   );
 };
 

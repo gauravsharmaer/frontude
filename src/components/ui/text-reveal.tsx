@@ -1,3 +1,4 @@
+//textreveal
 //text reaveal
 "use client";
 
