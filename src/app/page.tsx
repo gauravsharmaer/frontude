@@ -19,7 +19,8 @@ import Genie from "../assets/Genie.svg";
 import InpharmD_logo from "../assets/InpharmD_logo.svg";
 import bartLogo from "../assets/bartLogo.svg";
 import secretdesires from "../assets/secretdesires.svg";
-
+import avena from "../assets/avena.svg";
+import edneed from "../assets/edneed.svg";
 import icon6 from "../assets/icon6.svg";
 import twinbo from "../assets/twinbo.svg";
 
@@ -347,10 +348,16 @@ const Home = () => {
                       h-[16px] sm:h-[18px] md:h-[24px]"
                   />
                   <Image
-                    src={icon6}
+                    src={avena}
                     alt="icon6"
                     className="w-auto cursor-pointer max-w-none 
-                      h-[16px] sm:h-[18px] md:h-[20px]"
+                      h-[16px] sm:h-[18px] md:h-[24px]"
+                  />
+                  <Image
+                    src={edneed}
+                    alt="icon7"
+                    className="w-auto cursor-pointer max-w-none 
+                      h-[16px] sm:h-[18px] md:h-[24px]"
                   />
                 </div>
                 <div className="flex space-x-8 sm:space-x-12 md:space-x-16 animate-loop-scroll">
@@ -385,10 +392,16 @@ const Home = () => {
                       h-[16px] sm:h-[18px] md:h-[24px]"
                   />
                   <Image
-                    src={icon6}
+                    src={avena}
                     alt="icon6"
                     className="w-auto cursor-pointer max-w-none 
-                      h-[16px] sm:h-[18px] md:h-[20px]"
+                      h-[16px] sm:h-[18px] md:h-[24px]"
+                  />
+                  <Image
+                    src={edneed}
+                    alt="icon7"
+                    className="w-auto cursor-pointer max-w-none 
+                      h-[16px] sm:h-[18px] md:h-[24px] "
                   />
                 </div>
               </div>

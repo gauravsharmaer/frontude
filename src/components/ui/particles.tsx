@@ -79,7 +79,7 @@ const Particles: React.FC<ParticlesProps> = ({
   const [particleCount, setParticleCount] = useState(quantity);
   const frameRef = useRef<number>();
   const lastFrameTimeRef = useRef<number>(0);
-  const FPS_LIMIT = 30; // Limit FPS for better performance
+  const FPS_LIMIT = 30; // Limit FPS for better performanc
   const FRAME_TIME = 1000 / FPS_LIMIT;
 
   useEffect(() => {
