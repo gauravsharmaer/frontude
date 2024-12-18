@@ -21,7 +21,7 @@ import bartLogo from "../assets/bartLogo.svg";
 import secretdesires from "../assets/secretdesires.svg";
 import avena from "../assets/avena.svg";
 import edneed from "../assets/edneed.svg";
-import icon6 from "../assets/icon6.svg";
+
 import twinbo from "../assets/twinbo.svg";
 
 import dynamic from "next/dynamic";
