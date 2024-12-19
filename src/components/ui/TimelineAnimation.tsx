@@ -10,123 +10,110 @@ export default function Component() {
     offset: ["start 100%", "end end"],
   });
 
-  const planningOpacity = useTransform(scrollYProgress, [0, 0.15], [0, 1]);
-  const analysisOpacity = useTransform(scrollYProgress, [0.15, 0.3], [0, 1]);
-  const designOpacity = useTransform(scrollYProgress, [0.3, 0.45], [0, 1]);
-  const implementationOpacity = useTransform(
-    scrollYProgress,
-    [0.45, 0.6],
-    [0, 1]
-  );
-  const testingOpacity = useTransform(scrollYProgress, [0.6, 0.75], [0, 1]);
-  const maintenanceOpacity = useTransform(scrollYProgress, [0.75, 0.9], [0, 1]);
+  // Create transform functions
+  const createOpacityTransform = (start: number, end: number) =>
+    useTransform(scrollYProgress, [start, end], [0, 1]);
 
-  const planningTextColor = useTransform(
-    scrollYProgress,
-    [0, 0.15, 0.15, 0.3],
-    ["#d6180a", "#d6180a", "#8A8A8A", "#8A8A8A"]
-  );
+  const createColorTransform = (start: number, mid: number) =>
+    useTransform(
+      scrollYProgress,
+      [start, mid, mid, mid + 0.15],
+      ["#d6180a", "#d6180a", "#8A8A8A", "#8A8A8A"]
+    );
 
-  const analysisTextColor = useTransform(
-    scrollYProgress,
-    [0.15, 0.3, 0.3, 0.45],
-    ["#d6180a", "#d6180a", "#8A8A8A", "#8A8A8A"]
-  );
+  const createImageFilterTransform = (
+    start: number,
+    mid: number,
+    isLast = false
+  ) =>
+    useTransform(
+      scrollYProgress,
+      [start, mid, mid, mid + 0.15],
+      isLast
+        ? ["url(#redTint)", "url(#redTint)", "url(#redTint)", "url(#redTint)"]
+        : ["url(#redTint)", "url(#redTint)", "none", "none"]
+    );
 
-  const designTextColor = useTransform(
-    scrollYProgress,
-    [0.3, 0.45, 0.45, 0.6],
-    ["#d6180a", "#d6180a", "#8A8A8A", "#8A8A8A"]
-  );
+  const createDescriptionOpacityTransform = (
+    start: number,
+    mid: number,
+    isVisible = false
+  ) =>
+    useTransform(
+      scrollYProgress,
+      [start, mid, mid, mid + 0.15],
+      isVisible ? [1, 1, 1, 1] : [1, 1, 0, 0]
+    );
 
-  const implementationTextColor = useTransform(
-    scrollYProgress,
-    [0.45, 0.6, 0.6, 0.75],
-    ["#d6180a", "#d6180a", "#8A8A8A", "#8A8A8A"]
-  );
+  const transforms = {
+    opacity: {
+      planning: createOpacityTransform(0, 0.15),
+      analysis: createOpacityTransform(0.15, 0.3),
+      design: createOpacityTransform(0.3, 0.45),
+      implementation: createOpacityTransform(0.45, 0.6),
+      testing: createOpacityTransform(0.6, 0.75),
+      maintenance: createOpacityTransform(0.75, 0.9),
+    },
+    textColor: {
+      planning: createColorTransform(0, 0.15),
+      analysis: createColorTransform(0.15, 0.3),
+      design: createColorTransform(0.3, 0.45),
+      implementation: createColorTransform(0.45, 0.6),
+      testing: createColorTransform(0.6, 0.75),
+      maintenance: createColorTransform(0.75, 0.9),
+    },
+    imageFilter: {
+      planning: createImageFilterTransform(0, 0.15),
+      analysis: createImageFilterTransform(0.15, 0.3),
+      design: createImageFilterTransform(0.3, 0.45),
+      implementation: createImageFilterTransform(0.45, 0.6),
+      testing: createImageFilterTransform(0.6, 0.75),
+      maintenance: createImageFilterTransform(0.75, 0.9, true),
+    },
+    descriptionOpacity: {
+      planning: createDescriptionOpacityTransform(0, 0.15, true),
+      analysis: createDescriptionOpacityTransform(0.15, 0.3),
+      design: createDescriptionOpacityTransform(0.3, 0.45),
+      implementation: createDescriptionOpacityTransform(0.45, 0.6),
+      testing: createDescriptionOpacityTransform(0.6, 0.75),
+      maintenance: createDescriptionOpacityTransform(0.75, 0.9, true),
+    },
+  };
 
-  const testingTextColor = useTransform(
-    scrollYProgress,
-    [0.6, 0.75, 0.75, 0.9],
-    ["#d6180a", "#d6180a", "#8A8A8A", "#8A8A8A"]
-  );
+  // SVG definitions
+  const svgDefs = (
+    <defs>
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+        <feMerge>
+          <feMergeNode in="coloredBlur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
 
-  const maintenanceTextColor = useTransform(
-    scrollYProgress,
-    [0.75, 0.9, 0.9, 1],
-    ["#d6180a", "#d6180a", "#d6180a", "#d6180a"]
-  );
+      <linearGradient id="verticalLineGradient" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#d6180a" stopOpacity="1" />
+        <stop offset="100%" stopColor="#d6180a" stopOpacity="0" />
+      </linearGradient>
 
-  const planningImageFilter = useTransform(
-    scrollYProgress,
-    [0, 0.15, 0.15, 0.3],
-    ["url(#redTint)", "url(#redTint)", "none", "none"]
-  );
+      <linearGradient
+        id="verticalLineGradientReverse"
+        x1="0"
+        y1="1"
+        x2="0"
+        y2="0"
+      >
+        <stop offset="0%" stopColor="#d6180a" stopOpacity="1" />
+        <stop offset="100%" stopColor="#d6180a" stopOpacity="0" />
+      </linearGradient>
 
-  const analysisImageFilter = useTransform(
-    scrollYProgress,
-    [0.15, 0.3, 0.3, 0.45],
-    ["url(#redTint)", "url(#redTint)", "none", "none"]
-  );
-
-  const designImageFilter = useTransform(
-    scrollYProgress,
-    [0.3, 0.45, 0.45, 0.6],
-    ["url(#redTint)", "url(#redTint)", "none", "none"]
-  );
-
-  const implementationImageFilter = useTransform(
-    scrollYProgress,
-    [0.45, 0.6, 0.6, 0.75],
-    ["url(#redTint)", "url(#redTint)", "none", "none"]
-  );
-
-  const testingImageFilter = useTransform(
-    scrollYProgress,
-    [0.6, 0.75, 0.75, 0.9],
-    ["url(#redTint)", "url(#redTint)", "none", "none"]
-  );
-
-  const maintenanceImageFilter = useTransform(
-    scrollYProgress,
-    [0.75, 0.9, 0.9, 1],
-    ["url(#redTint)", "url(#redTint)", "url(#redTint)", "url(#redTint)"]
-  );
-
-  const planningDescriptionOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.15, 0.15, 0.3],
-    [1, 1, 1, 1]
-  );
-
-  const analysisDescriptionOpacity = useTransform(
-    scrollYProgress,
-    [0.15, 0.3, 0.3, 0.45],
-    [1, 1, 0, 0]
-  );
-
-  const designDescriptionOpacity = useTransform(
-    scrollYProgress,
-    [0.3, 0.45, 0.45, 0.6],
-    [1, 1, 0, 0]
-  );
-
-  const implementationDescriptionOpacity = useTransform(
-    scrollYProgress,
-    [0.45, 0.6, 0.6, 0.75],
-    [1, 1, 0, 0]
-  );
-
-  const testingDescriptionOpacity = useTransform(
-    scrollYProgress,
-    [0.6, 0.75, 0.75, 0.9],
-    [1, 1, 0, 0]
-  );
-
-  const maintenanceDescriptionOpacity = useTransform(
-    scrollYProgress,
-    [0.75, 0.9, 0.9, 1],
-    [1, 1, 1, 1]
+      <filter id="redTint">
+        <feColorMatrix
+          type="matrix"
+          values="1 0 0 0 0.839 0 0 0 0 0.094 0 0 0 0 0.039 0 0 0 1 0"
+        />
+      </filter>
+    </defs>
   );
 
   return (
@@ -154,47 +141,7 @@ export default function Component() {
             viewBox="0 0 1000 800"
             preserveAspectRatio="xMidYMid meet"
           >
-            <defs>
-              <filter id="glow">
-                <feGaussianBlur stdDeviation="2" result="coloredBlur" />
-                <feMerge>
-                  <feMergeNode in="coloredBlur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-
-              <linearGradient
-                id="verticalLineGradient"
-                x1="0"
-                y1="0"
-                x2="0"
-                y2="1"
-              >
-                <stop offset="0%" stopColor="#d6180a" stopOpacity="1" />
-                <stop offset="100%" stopColor="#d6180a" stopOpacity="0" />
-              </linearGradient>
-
-              <linearGradient
-                id="verticalLineGradientReverse"
-                x1="0"
-                y1="1"
-                x2="0"
-                y2="0"
-              >
-                <stop offset="0%" stopColor="#d6180a" stopOpacity="1" />
-                <stop offset="100%" stopColor="#d6180a" stopOpacity="0" />
-              </linearGradient>
-
-              <filter id="redTint">
-                <feColorMatrix
-                  type="matrix"
-                  values="1 0 0 0 0.839
-                          0 0 0 0 0.094
-                          0 0 0 0 0.039
-                          0 0 0 1 0"
-                />
-              </filter>
-            </defs>
+            {svgDefs}
 
             <motion.path
               d="M 100,100 H 400 C 500,100 700,100 800,200 C 900,300 900,400 800,500 C 700,600 500,600 300,600"
@@ -205,8 +152,7 @@ export default function Component() {
             />
 
             {/* Planning */}
-            <motion.g style={{ opacity: planningOpacity }}>
-              {/* Upper vertical line with reversed gradient */}
+            <motion.g style={{ opacity: transforms.opacity.planning }}>
               <rect
                 x="98.5"
                 y="0"
@@ -221,13 +167,13 @@ export default function Component() {
                 y="67"
                 width="16"
                 height="16"
-                style={{ filter: planningImageFilter }}
+                style={{ filter: transforms.imageFilter.planning }}
               />
               <motion.text
                 x="70"
                 y="80"
                 className="text-[12px] md:text-[14px] font-inter"
-                style={{ fill: planningTextColor }}
+                style={{ fill: transforms.textColor.planning }}
               >
                 Discovery
               </motion.text>
@@ -236,7 +182,7 @@ export default function Component() {
                 y="100"
                 className="text-[10px] md:text-xs font-inter"
                 fill="#8A8A8A"
-                style={{ opacity: planningDescriptionOpacity }}
+                style={{ opacity: transforms.descriptionOpacity.planning }}
               >
                 Understanding your business, goals
               </motion.text>
@@ -245,11 +191,10 @@ export default function Component() {
                 y="120"
                 className="text-[10px] md:text-xs font-inter"
                 fill="#8A8A8A"
-                style={{ opacity: planningDescriptionOpacity }}
+                style={{ opacity: transforms.descriptionOpacity.planning }}
               >
                 and market position
               </motion.text>
-              {/* Lower vertical line with normal gradient */}
               <rect
                 x="98.5"
                 y="100"
@@ -268,20 +213,20 @@ export default function Component() {
             </motion.g>
 
             {/* Analysis */}
-            <motion.g style={{ opacity: analysisOpacity }}>
+            <motion.g style={{ opacity: transforms.opacity.analysis }}>
               <motion.image
                 href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/discovery-lUcuYK3WA8j2J6VHM5COVjlUHe535G.svg"
                 x="400"
                 y="67"
                 width="16"
                 height="16"
-                style={{ filter: analysisImageFilter }}
+                style={{ filter: transforms.imageFilter.analysis }}
               />
               <motion.text
                 x="420"
                 y="80"
                 className="text-[14px] font-inter"
-                style={{ fill: analysisTextColor }}
+                style={{ fill: transforms.textColor.analysis }}
               >
                 Strategy Development
               </motion.text>
@@ -290,7 +235,7 @@ export default function Component() {
                 y="100"
                 className="text-[10px] md:text-xs font-inter"
                 fill="#8A8A8A"
-                style={{ opacity: analysisDescriptionOpacity }}
+                style={{ opacity: transforms.descriptionOpacity.analysis }}
               >
                 Creating a roadmap tailored
               </motion.text>
@@ -299,7 +244,7 @@ export default function Component() {
                 y="120"
                 className="text-[10px] md:text-xs font-inter"
                 fill="#8A8A8A"
-                style={{ opacity: analysisDescriptionOpacity }}
+                style={{ opacity: transforms.descriptionOpacity.analysis }}
               >
                 to your objectives
               </motion.text>
@@ -321,20 +266,20 @@ export default function Component() {
             </motion.g>
 
             {/* Design */}
-            <motion.g style={{ opacity: designOpacity }}>
+            <motion.g style={{ opacity: transforms.opacity.design }}>
               <motion.image
                 href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/discovery-lUcuYK3WA8j2J6VHM5COVjlUHe535G.svg"
                 x="700"
                 y="92"
                 width="16"
                 height="16"
-                style={{ filter: designImageFilter }}
+                style={{ filter: transforms.imageFilter.design }}
               />
               <motion.text
                 x="720"
                 y="105"
                 className="text-[14px] font-inter"
-                style={{ fill: designTextColor }}
+                style={{ fill: transforms.textColor.design }}
               >
                 Design & Innovation
               </motion.text>
@@ -343,7 +288,7 @@ export default function Component() {
                 y="125"
                 className="text-[10px] md:text-xs font-inter"
                 fill="#8A8A8A"
-                style={{ opacity: designDescriptionOpacity }}
+                style={{ opacity: transforms.descriptionOpacity.design }}
               >
                 Crafting solutions that blend
               </motion.text>
@@ -352,7 +297,7 @@ export default function Component() {
                 y="145"
                 className="text-[10px] md:text-xs font-inter"
                 fill="#8A8A8A"
-                style={{ opacity: designDescriptionOpacity }}
+                style={{ opacity: transforms.descriptionOpacity.design }}
               >
                 form and function
               </motion.text>
@@ -364,7 +309,6 @@ export default function Component() {
                 transform="rotate(-90.13deg)"
                 fill="url(#verticalLineGradient)"
               />
-
               <circle
                 cx="750"
                 cy="162"
@@ -375,20 +319,20 @@ export default function Component() {
             </motion.g>
 
             {/* Implementation */}
-            <motion.g style={{ opacity: implementationOpacity }}>
+            <motion.g style={{ opacity: transforms.opacity.implementation }}>
               <motion.image
                 href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/discovery-lUcuYK3WA8j2J6VHM5COVjlUHe535G.svg"
                 x="882"
                 y="287"
                 width="16"
                 height="16"
-                style={{ filter: implementationImageFilter }}
+                style={{ filter: transforms.imageFilter.implementation }}
               />
               <motion.text
                 x="900"
                 y="300"
                 className="text-[14px] font-inter"
-                style={{ fill: implementationTextColor }}
+                style={{ fill: transforms.textColor.implementation }}
               >
                 Development
               </motion.text>
@@ -397,7 +341,9 @@ export default function Component() {
                 y="320"
                 className="text-[10px] md:text-xs font-inter"
                 fill="#8A8A8A"
-                style={{ opacity: implementationDescriptionOpacity }}
+                style={{
+                  opacity: transforms.descriptionOpacity.implementation,
+                }}
               >
                 Building with cutting-edge technology
               </motion.text>
@@ -406,7 +352,9 @@ export default function Component() {
                 y="340"
                 className="text-[10px] md:text-xs font-inter"
                 fill="#8A8A8A"
-                style={{ opacity: implementationDescriptionOpacity }}
+                style={{
+                  opacity: transforms.descriptionOpacity.implementation,
+                }}
               >
                 and best practices
               </motion.text>
@@ -428,20 +376,20 @@ export default function Component() {
             </motion.g>
 
             {/* Testing */}
-            <motion.g style={{ opacity: testingOpacity }}>
+            <motion.g style={{ opacity: transforms.opacity.testing }}>
               <motion.image
                 href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/discovery-lUcuYK3WA8j2J6VHM5COVjlUHe535G.svg"
                 x="750"
                 y="467"
                 width="16"
                 height="16"
-                style={{ filter: testingImageFilter }}
+                style={{ filter: transforms.imageFilter.testing }}
               />
               <motion.text
                 x="770"
                 y="480"
                 className="text-[14px] font-inter"
-                style={{ fill: testingTextColor }}
+                style={{ fill: transforms.textColor.testing }}
               >
                 Launch & Optimization
               </motion.text>
@@ -450,11 +398,10 @@ export default function Component() {
                 y="500"
                 className="text-[10px] md:text-xs font-inter"
                 fill="#8A8A8A"
-                style={{ opacity: testingDescriptionOpacity }}
+                style={{ opacity: transforms.descriptionOpacity.testing }}
               >
                 Ensuring performance meets expectations
               </motion.text>
-
               <rect
                 x="799"
                 y="500"
@@ -473,16 +420,15 @@ export default function Component() {
             </motion.g>
 
             {/* Maintenance */}
-            <motion.g style={{ opacity: maintenanceOpacity }}>
+            <motion.g style={{ opacity: transforms.opacity.maintenance }}>
               <motion.image
                 href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/discovery-lUcuYK3WA8j2J6VHM5COVjlUHe535G.svg"
                 x="250"
                 y="527"
                 width="16"
                 height="16"
-                style={{ filter: maintenanceImageFilter }}
+                style={{ filter: transforms.imageFilter.maintenance }}
               />
-
               <rect
                 x="298"
                 y="600"
@@ -491,7 +437,6 @@ export default function Component() {
                 transform="rotate(-90.13deg)"
                 fill="url(#verticalLineGradient)"
               />
-
               <circle
                 cx="300"
                 cy="600"
@@ -499,12 +444,11 @@ export default function Component() {
                 className="fill-[#d6180a]"
                 filter="url(#glow)"
               />
-
               <motion.text
                 x="270"
                 y="540"
                 className="text-[12px] md:text-[14px] font-inter"
-                style={{ fill: maintenanceTextColor }}
+                style={{ fill: transforms.textColor.maintenance }}
               >
                 Ongoing Partnership
               </motion.text>
@@ -513,7 +457,7 @@ export default function Component() {
                 y="560"
                 className="text-[10px] md:text-xs font-inter"
                 fill="#8A8A8A"
-                style={{ opacity: maintenanceDescriptionOpacity }}
+                style={{ opacity: transforms.descriptionOpacity.maintenance }}
               >
                 Supporting your continued
               </motion.text>
@@ -522,7 +466,7 @@ export default function Component() {
                 y="580"
                 className="text-[10px] md:text-xs font-inter"
                 fill="#8A8A8A"
-                style={{ opacity: maintenanceDescriptionOpacity }}
+                style={{ opacity: transforms.descriptionOpacity.maintenance }}
               >
                 evolution and growth
               </motion.text>

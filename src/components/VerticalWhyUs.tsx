@@ -1,12 +1,12 @@
-//whyus
 "use client";
 
-import { useRef } from "react";
+import { useRef, memo } from "react";
 import Image, { StaticImageData } from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Img from "../assets/15133.jpg";
 import Img2 from "../assets/2820622.jpg";
 import Img3 from "../assets/test.png";
+
 interface TimelineSection {
   number: number;
   title: string;
@@ -45,7 +45,7 @@ const sections: TimelineSection[] = [
   },
 ];
 
-function TimelineSection({
+const TimelineSection = memo(function TimelineSection({
   number,
   title,
   description,
@@ -61,15 +61,11 @@ function TimelineSection({
 
   const scale = useTransform(
     scrollYProgress,
-    [0, 0.2, 0.4, 0.6, 0.8, 1],
-    [0.9, 0.95, 1, 1, 0.95, 0.9]
+    [0, 0.5, 1], // Simplified keyframes
+    [0.95, 1, 0.95]
   );
 
-  const opacity = useTransform(
-    scrollYProgress,
-    [0, 0.2, 0.4, 0.6, 0.8, 1],
-    [0.7, 0.85, 1, 1, 0.85, 0.7]
-  );
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 1, 0.3]);
 
   return (
     <motion.div
@@ -78,9 +74,9 @@ function TimelineSection({
       style={{
         scale,
         opacity,
-        zIndex: 1,
       }}
-      transition={{ duration: 0.5, ease: "easeInOut" }}
+      initial={false}
+      transition={{ duration: 0.3 }}
     >
       <div className="w-full max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-8">
         <h2 className="text-xl md:text-2xl font-bold text-white text-center mb-2 font-inter">
@@ -92,11 +88,12 @@ function TimelineSection({
 
         <div className="relative w-full max-w-[min(90vw,800px)] mx-auto perspective-1000">
           <motion.div
-            className="relative w-full rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.3)] transform-gpu"
+            className="relative w-full rounded-2xl overflow-hidden shadow-lg transform-gpu"
             style={{
               transform: "rotateX(5deg)",
               transformOrigin: "center center",
             }}
+            initial={false}
           >
             <Image
               src={mockupImage}
@@ -104,8 +101,10 @@ function TimelineSection({
               width={600}
               height={200}
               className="w-full h-auto aspect-[3/1] rounded-2xl"
-              quality={100}
-              priority
+              quality={75}
+              loading="lazy"
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQrJyEwPENDPzE2O0FBNi5QREZXUFM4UjVqV1JwZoJvdnF6YWNscHDe/2wBDRUXFx4aHR4eHXdeUV5e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
             />
           </motion.div>
 
@@ -130,9 +129,9 @@ function TimelineSection({
       </div>
     </motion.div>
   );
-}
+});
 
-export default function VerticalTimeline() {
+const VerticalTimeline = memo(function VerticalTimeline() {
   return (
     <div className="relative min-h-screen bg-black">
       <div className="mx-auto max-w-[100vw]">
@@ -164,4 +163,6 @@ export default function VerticalTimeline() {
       </div>
     </div>
   );
-}
+});
+
+export default VerticalTimeline;
