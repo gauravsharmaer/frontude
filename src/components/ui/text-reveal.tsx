@@ -63,20 +63,25 @@ interface WordProps {
   range: [number, number];
 }
 
-const Word = motion(
-  forwardRef<HTMLSpanElement, WordProps>(
-    ({ children, progress, range }, ref) => {
-      const opacity = useTransform(progress, range, [0, 1]);
-      return (
-        <span ref={ref} className="relative mx-1 lg:mx-2.5">
-          <span className="absolute opacity-5 text-white">{children}</span>
-          <motion.span style={{ opacity }} className="text-white relative">
-            {children}
-          </motion.span>
-        </span>
-      );
-    }
-  )
+const WordComponent = forwardRef<HTMLSpanElement, WordProps>(
+  ({ children, progress, range }, ref) => {
+    const opacity = useTransform(progress, range, [0, 1]);
+    return (
+      <span ref={ref} className="relative mx-1 lg:mx-2.5">
+        <span className="absolute opacity-5 text-white">{children}</span>
+        <motion.span style={{ opacity }} className="text-white relative">
+          {children}
+        </motion.span>
+      </span>
+    );
+  }
 );
+
+WordComponent.displayName = "Word";
+
+const Word = motion(WordComponent);
+
+// Add display name to the TextRevealByWord component
+TextRevealByWord.displayName = "TextRevealByWord";
 
 export { TextRevealByWord as default };

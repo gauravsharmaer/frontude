@@ -1,82 +1,100 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 
-export default function Component() {
+// Move transform functions outside component
+const useOpacityTransform = (
+  scrollYProgress: MotionValue<number>,
+  start: number,
+  end: number
+) => useTransform(scrollYProgress, [start, end], [0, 1]);
+
+const useColorTransform = (
+  scrollYProgress: MotionValue<number>,
+  start: number,
+  mid: number
+) =>
+  useTransform(
+    scrollYProgress,
+    [start, mid, mid, mid + 0.15],
+    ["#d6180a", "#d6180a", "#8A8A8A", "#8A8A8A"]
+  );
+
+const useImageFilterTransform = (
+  scrollYProgress: MotionValue<number>,
+  start: number,
+  mid: number,
+  isLast = false
+) =>
+  useTransform(
+    scrollYProgress,
+    [start, mid, mid, mid + 0.15],
+    isLast
+      ? ["url(#redTint)", "url(#redTint)", "url(#redTint)", "url(#redTint)"]
+      : ["url(#redTint)", "url(#redTint)", "none", "none"]
+  );
+
+const useDescriptionOpacityTransform = (
+  scrollYProgress: MotionValue<number>,
+  start: number,
+  mid: number,
+  isVisible = false
+) =>
+  useTransform(
+    scrollYProgress,
+    [start, mid, mid, mid + 0.15],
+    isVisible ? [1, 1, 1, 1] : [1, 1, 0, 0]
+  );
+
+export default function TimelineAnimation() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start 100%", "end end"],
   });
 
-  // Create transform functions
-  const createOpacityTransform = (start: number, end: number) =>
-    useTransform(scrollYProgress, [start, end], [0, 1]);
-
-  const createColorTransform = (start: number, mid: number) =>
-    useTransform(
-      scrollYProgress,
-      [start, mid, mid, mid + 0.15],
-      ["#d6180a", "#d6180a", "#8A8A8A", "#8A8A8A"]
-    );
-
-  const createImageFilterTransform = (
-    start: number,
-    mid: number,
-    isLast = false
-  ) =>
-    useTransform(
-      scrollYProgress,
-      [start, mid, mid, mid + 0.15],
-      isLast
-        ? ["url(#redTint)", "url(#redTint)", "url(#redTint)", "url(#redTint)"]
-        : ["url(#redTint)", "url(#redTint)", "none", "none"]
-    );
-
-  const createDescriptionOpacityTransform = (
-    start: number,
-    mid: number,
-    isVisible = false
-  ) =>
-    useTransform(
-      scrollYProgress,
-      [start, mid, mid, mid + 0.15],
-      isVisible ? [1, 1, 1, 1] : [1, 1, 0, 0]
-    );
-
   const transforms = {
     opacity: {
-      planning: createOpacityTransform(0, 0.15),
-      analysis: createOpacityTransform(0.15, 0.3),
-      design: createOpacityTransform(0.3, 0.45),
-      implementation: createOpacityTransform(0.45, 0.6),
-      testing: createOpacityTransform(0.6, 0.75),
-      maintenance: createOpacityTransform(0.75, 0.9),
+      planning: useOpacityTransform(scrollYProgress, 0, 0.15),
+      analysis: useOpacityTransform(scrollYProgress, 0.15, 0.3),
+      design: useOpacityTransform(scrollYProgress, 0.3, 0.45),
+      implementation: useOpacityTransform(scrollYProgress, 0.45, 0.6),
+      testing: useOpacityTransform(scrollYProgress, 0.6, 0.75),
+      maintenance: useOpacityTransform(scrollYProgress, 0.75, 0.9),
     },
     textColor: {
-      planning: createColorTransform(0, 0.15),
-      analysis: createColorTransform(0.15, 0.3),
-      design: createColorTransform(0.3, 0.45),
-      implementation: createColorTransform(0.45, 0.6),
-      testing: createColorTransform(0.6, 0.75),
-      maintenance: createColorTransform(0.75, 0.9),
+      planning: useColorTransform(scrollYProgress, 0, 0.15),
+      analysis: useColorTransform(scrollYProgress, 0.15, 0.3),
+      design: useColorTransform(scrollYProgress, 0.3, 0.45),
+      implementation: useColorTransform(scrollYProgress, 0.45, 0.6),
+      testing: useColorTransform(scrollYProgress, 0.6, 0.75),
+      maintenance: useColorTransform(scrollYProgress, 0.75, 0.9),
     },
     imageFilter: {
-      planning: createImageFilterTransform(0, 0.15),
-      analysis: createImageFilterTransform(0.15, 0.3),
-      design: createImageFilterTransform(0.3, 0.45),
-      implementation: createImageFilterTransform(0.45, 0.6),
-      testing: createImageFilterTransform(0.6, 0.75),
-      maintenance: createImageFilterTransform(0.75, 0.9, true),
+      planning: useImageFilterTransform(scrollYProgress, 0, 0.15),
+      analysis: useImageFilterTransform(scrollYProgress, 0.15, 0.3),
+      design: useImageFilterTransform(scrollYProgress, 0.3, 0.45),
+      implementation: useImageFilterTransform(scrollYProgress, 0.45, 0.6),
+      testing: useImageFilterTransform(scrollYProgress, 0.6, 0.75),
+      maintenance: useImageFilterTransform(scrollYProgress, 0.75, 0.9, true),
     },
     descriptionOpacity: {
-      planning: createDescriptionOpacityTransform(0, 0.15, true),
-      analysis: createDescriptionOpacityTransform(0.15, 0.3),
-      design: createDescriptionOpacityTransform(0.3, 0.45),
-      implementation: createDescriptionOpacityTransform(0.45, 0.6),
-      testing: createDescriptionOpacityTransform(0.6, 0.75),
-      maintenance: createDescriptionOpacityTransform(0.75, 0.9, true),
+      planning: useDescriptionOpacityTransform(scrollYProgress, 0, 0.15, true),
+      analysis: useDescriptionOpacityTransform(scrollYProgress, 0.15, 0.3),
+      design: useDescriptionOpacityTransform(scrollYProgress, 0.3, 0.45),
+      implementation: useDescriptionOpacityTransform(
+        scrollYProgress,
+        0.45,
+        0.6
+      ),
+      testing: useDescriptionOpacityTransform(scrollYProgress, 0.6, 0.75),
+      maintenance: useDescriptionOpacityTransform(
+        scrollYProgress,
+        0.75,
+        0.9,
+        true
+      ),
     },
   };
 

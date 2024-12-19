@@ -31,7 +31,7 @@ const DynamicCursorWrapper = dynamic(
 );
 
 // Extract Nav component to separate memo'd component
-const Nav = React.memo(() => {
+const Nav = React.memo(function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleEmailClick = useCallback(() => {
@@ -162,18 +162,20 @@ interface LogoScrollProps {
 }
 
 // Extract LogoScroll into separate component
-const LogoScroll = React.memo<LogoScrollProps>(({ logos }) => (
-  <div className="flex space-x-8 sm:space-x-12 md:space-x-16 animate-loop-scroll">
-    {logos.map((logo, index) => (
-      <Image
-        key={index}
-        src={logo.src}
-        alt={logo.alt}
-        className="w-auto cursor-pointer max-w-none h-[16px] sm:h-[18px] md:h-[24px]"
-      />
-    ))}
-  </div>
-));
+const LogoScroll = React.memo(function LogoScroll({ logos }: LogoScrollProps) {
+  return (
+    <div className="flex space-x-8 sm:space-x-12 md:space-x-16 animate-loop-scroll">
+      {logos.map((logo, index) => (
+        <Image
+          key={index}
+          src={logo.src}
+          alt={logo.alt}
+          className="w-auto cursor-pointer max-w-none h-[16px] sm:h-[18px] md:h-[24px]"
+        />
+      ))}
+    </div>
+  );
+});
 
 const Home = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -371,12 +373,15 @@ const Home = () => {
 };
 
 // Utility function for debouncing
-function debounce(func: Function, wait: number) {
+function debounce(
+  fn: (...args: unknown[]) => void,
+  wait: number
+): (...args: unknown[]) => void {
   let timeout: NodeJS.Timeout;
-  return function executedFunction(...args: any[]) {
+  return function executedFunction(...args: unknown[]) {
     const later = () => {
       clearTimeout(timeout);
-      func(...args);
+      fn(...args);
     };
     clearTimeout(timeout);
     timeout = setTimeout(later, wait);

@@ -48,7 +48,7 @@ const TechCardCollection = memo(() => {
         <p className="opacity-70 text-white text-[14px] sm:text-[16px] font-light font-inter leading-normal sm:leading-[24px] max-w-[90%] sm:max-w-none">
           By uniting creativity and innovation, our team brings every project to
           life with precision and passion, delivering results that exceed
-          expectations. Here's how we make a difference:
+          expectations. Here`s how we make a difference:
         </p>
       </div>
 
