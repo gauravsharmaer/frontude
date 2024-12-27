@@ -2,16 +2,10 @@
 "use client";
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 import Image from "next/image";
-import { MarqueeDemoVertical } from "@/components/ui/marqueeVertical";
 import { HomeBackground } from "../components/ui/Background";
 import Flogo from "../assets/FrontudeLogo.svg";
-import TechCardCollection from "../components/TechCardCollection";
-import VerticalTimeline from "@/components/VerticalWhyUs";
 import { RainbowButtonDemo } from "../components/ui/RainbowButtonui";
 import Background from "../assets/image.jpg";
-// import { ParticlesDemo } from "@/components/ui/particlesui";
-import { TextRevealDemo } from "../components/TextRevealDemo";
-import TimelineAnimation from "@/components/ui/TimelineAnimation";
 import Footer from "../components/Footer";
 
 import Genie from "../assets/Genie.svg";
@@ -23,6 +17,7 @@ import edneed from "../assets/edneed.svg";
 import twinbo from "../assets/twinbo.svg";
 
 import dynamic from "next/dynamic";
+import { InView } from "react-intersection-observer";
 
 // Lazy load cursor wrapper
 const DynamicCursorWrapper = dynamic(
@@ -177,6 +172,48 @@ const LogoScroll = React.memo(function LogoScroll({ logos }: LogoScrollProps) {
   );
 });
 
+// Convert static imports to dynamic imports for heavy components
+const TextRevealDemo = dynamic(
+  () =>
+    import("../components/TextRevealDemo").then((mod) => mod.TextRevealDemo),
+  {
+    loading: () => <div className="min-h-[200px]" />,
+    ssr: false,
+  }
+);
+
+const TimelineAnimation = dynamic(
+  () => import("@/components/ui/TimelineAnimation"),
+  {
+    loading: () => <div className="min-h-[400px]" />,
+    ssr: false,
+  }
+);
+
+const TechCardCollection = dynamic(
+  () => import("../components/TechCardCollection"),
+  {
+    loading: () => <div className="min-h-[300px]" />,
+    ssr: false,
+  }
+);
+
+const VerticalTimeline = dynamic(() => import("@/components/VerticalWhyUs"), {
+  loading: () => <div className="min-h-[400px]" />,
+  ssr: false,
+});
+
+const MarqueeDemoVertical = dynamic(
+  () =>
+    import("@/components/ui/marqueeVertical").then(
+      (mod) => mod.MarqueeDemoVertical
+    ),
+  {
+    loading: () => <div className="min-h-[200px]" />,
+    ssr: false,
+  }
+);
+
 const Home = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [windowSize, setWindowSize] = useState({
@@ -310,8 +347,6 @@ const Home = () => {
               <div className="absolute inset-0 bg-black/60 -z-20" />
             )}
 
-            {/* <ParticlesDemo /> */}
-
             <div className="flex flex-col items-center w-full max-w-[min(100%,1440px)] mx-auto px-3 sm:px-4 md:px-6 lg:px-8 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
               <h1 className="text-white font-pocKota text-center text-[28px] sm:text-[32px] md:text-[40px] lg:text-[56px] xl:text-[72px] 2xl:text-[80px] font-bold relative leading-[1.2]">
                 Crafting digital{" "}
@@ -341,13 +376,22 @@ const Home = () => {
 
           <section className="w-full px-3 sm:px-4 md:px-6 lg:px-8 xl:px-10 py-8 sm:py-12 md:py-0 lg:py-0 max-w-[2000px] mx-auto">
             <div className="flex flex-col gap-8 sm:gap-12 md:gap-16 lg:gap-20 xl:gap-24 max-w-[1920px] mx-auto">
-              <div className="w-full flex justify-center items-center px-2 sm:px-4 md:px-6">
-                <TextRevealDemo />
-              </div>
+              <InView triggerOnce>
+                {({ inView, ref }) => (
+                  <div ref={ref}>{inView && <TextRevealDemo />}</div>
+                )}
+              </InView>
 
-              <div className="flex flex-col gap-6 sm:gap-8 md:gap-10 lg:gap-12 w-full max-w-[95%] sm:max-w-[90%] md:max-w-[85%] mx-auto">
-                <TimelineAnimation />
-              </div>
+              <InView triggerOnce>
+                {({ inView, ref }) => (
+                  <div
+                    ref={ref}
+                    className="flex flex-col gap-6 sm:gap-8 md:gap-10 lg:gap-12 w-full max-w-[95%] sm:max-w-[90%] md:max-w-[85%] mx-auto"
+                  >
+                    {inView && <TimelineAnimation />}
+                  </div>
+                )}
+              </InView>
 
               <div className="flex flex-col w-full px-2 sm:px-4 md:px-6 lg:px-8">
                 <TechCardCollection />
