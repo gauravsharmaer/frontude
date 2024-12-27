@@ -189,6 +189,13 @@ const TimelineAnimation = dynamic(
     ssr: false,
   }
 );
+const ParticlesDemo = dynamic(
+  () => import("../components/ui/particlesui").then((mod) => mod.ParticlesDemo),
+  {
+    loading: () => <div className="min-h-[400px]" />,
+    ssr: false,
+  }
+);
 
 const TechCardCollection = dynamic(
   () => import("../components/TechCardCollection"),
@@ -346,6 +353,12 @@ const Home = () => {
             ) : (
               <div className="absolute inset-0 bg-black/60 -z-20" />
             )}
+
+            <InView triggerOnce>
+              {({ inView, ref }) => (
+                <div ref={ref}>{inView && <ParticlesDemo />}</div>
+              )}
+            </InView>
 
             <div className="flex flex-col items-center w-full max-w-[min(100%,1440px)] mx-auto px-3 sm:px-4 md:px-6 lg:px-8 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
               <h1 className="text-white font-pocKota text-center text-[28px] sm:text-[32px] md:text-[40px] lg:text-[56px] xl:text-[72px] 2xl:text-[80px] font-bold relative leading-[1.2]">
