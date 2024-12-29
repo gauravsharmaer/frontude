@@ -14,7 +14,7 @@ const FooterText = React.memo(() => {
           {[
             ["info", "/info"],
             ["newsletter", "/newsletter"],
-            ["instagram", "/instagram"],
+            ["instagram", "/"],
             ["contact", "/contact"],
           ].map(([text, href]) => (
             <Link

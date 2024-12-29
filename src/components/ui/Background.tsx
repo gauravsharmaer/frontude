@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 import * as React from "react";
-import { ParticlesDemo } from "./particlesui";
+// import { ParticlesDemo } from "./particlesui";
 
 export interface AuthBackgroundProps
   extends React.HTMLAttributes<HTMLDivElement> {}
@@ -12,7 +12,7 @@ const HomeBackground = React.forwardRef<HTMLDivElement, AuthBackgroundProps>(
       className={`bg-[#070305] min-h-screen w-full relative ${className}`}
       {...props}
     >
-      <ParticlesDemo />
+      {/* <ParticlesDemo /> */}
       <div className="relative z-10 w-full">{props.children}</div>
     </div>
   )
