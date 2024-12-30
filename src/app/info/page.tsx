@@ -10,11 +10,11 @@ const DynamicCursorWrapper = dynamic(
 const Info = () => {
   return (
     <DynamicCursorWrapper>
-      <div className="h-screen w-screen relative">
+      <div className="min-h-screen w-full relative flex items-center justify-center">
         <Image
           src={teamf}
           alt="teamf"
-          className="w-full h-full object-cover absolute inset-0"
+          className="w-full h-full object-contain md:object-cover absolute inset-0 px-4 md:px-0"
           priority
         />
       </div>

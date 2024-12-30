@@ -2,7 +2,7 @@ import Image from "next/image";
 import Visual from "../assets/Visual.svg";
 import Performance from "../assets/Performance.svg";
 import Security from "../assets/secure.svg";
-import Reliability from "../assets/reliability.svg";
+import Reliability from "../assets/Reliability.svg";
 import Ripple from "../components/ui/ripple";
 
 const WhyUs = () => {
