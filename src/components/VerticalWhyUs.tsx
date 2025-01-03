@@ -3,9 +3,10 @@
 import { useRef, memo } from "react";
 import Image, { StaticImageData } from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Img from "../assets/15133.jpg";
-import Img2 from "../assets/2820622.jpg";
-import Img3 from "../assets/test.png";
+import Img from "../assets/Visual Brilliance.svg";
+import Img2 from "../assets/Reliability.svg";
+import Img3 from "../assets/Performance.svg";
+import Img4 from "../assets/Security.svg";
 
 interface TimelineSection {
   number: number;
@@ -41,7 +42,7 @@ const sections: TimelineSection[] = [
     title: "Security",
     description:
       "Specialized in building secure systems that safeguard data and trust.",
-    mockupImage: "https://picsum.photos/seed/section4/600/300",
+    mockupImage: Img4,
   },
 ];
 
@@ -88,23 +89,24 @@ const TimelineSection = memo(function TimelineSection({
 
         <div className="relative w-full max-w-[min(90vw,800px)] mx-auto perspective-1000">
           <motion.div
-            className="relative w-full rounded-2xl overflow-hidden shadow-lg transform-gpu"
+            className="relative w-full rounded-2xl overflow-hidden shadow-lg transform-gpu bg-gray-900"
             style={{
               transform: "rotateX(5deg)",
               transformOrigin: "center center",
+              minHeight: "300px",
+              height: "auto",
             }}
             initial={false}
           >
             <Image
               src={mockupImage}
               alt={`${title} mockup`}
-              width={600}
-              height={200}
-              className="w-full h-auto aspect-[3/1] rounded-2xl"
-              quality={75}
-              loading="lazy"
-              placeholder="blur"
-              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQrJyEwPENDPzE2O0FBNi5QREZXUFM4UjVqV1JwZoJvdnF6YWNscHDe/2wBDRUXFx4aHR4eHXdeUV5e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+              className="w-full h-full object-contain rounded-2xl"
+              quality={100}
+              width={1920}
+              height={1080}
+              priority
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
             />
           </motion.div>
 
