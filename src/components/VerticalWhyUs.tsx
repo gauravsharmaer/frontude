@@ -89,24 +89,28 @@ const TimelineSection = memo(function TimelineSection({
 
         <div className="relative w-full max-w-[min(90vw,800px)] mx-auto perspective-1000">
           <motion.div
-            className="relative w-full rounded-2xl overflow-hidden shadow-lg transform-gpu bg-gray-900"
+            className="relative w-full rounded-2xl overflow-hidden transform-gpu"
             style={{
               transform: "rotateX(5deg)",
               transformOrigin: "center center",
-              minHeight: "300px",
-              height: "auto",
+              height: "60vh",
+              minHeight: "400px",
+              position: "relative",
             }}
             initial={false}
           >
             <Image
               src={mockupImage}
               alt={`${title} mockup`}
-              className="w-full h-full object-contain rounded-2xl"
-              quality={100}
-              width={1920}
-              height={1080}
+              className="rounded-2xl"
+              fill
+              unoptimized
               priority
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+              sizes="(max-width: 768px) 100vw, 800px"
+              style={{
+                objectFit: "contain",
+                objectPosition: "center",
+              }}
             />
           </motion.div>
 
